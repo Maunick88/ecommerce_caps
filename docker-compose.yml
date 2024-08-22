@@ -8,6 +8,9 @@ services:
     ports:
       - "8005:80"
     volumes:
+      - /home/maunick/Documentos/ecommerce_caps/public:/var/www/html/public
+      - /home/maunick/Documentos/ecommerce_caps/resources:/var/www/html/resources
+      - /home/maunick/Documentos/ecommerce_caps/node_modules:/var/www/html/node_modules
       - /home/maunick/Documentos/ecommerce_caps:/var/www/html
     networks:
       - app-network
@@ -19,9 +22,14 @@ services:
       MYSQL_DATABASE: ecommerce_caps
     ports:
       - "3306:3306"
+    volumes:
+      - db-data:/var/lib/mysql
     networks:
       - app-network
 
 networks:
   app-network:
     driver: bridge
+
+volumes:
+  db-data:
