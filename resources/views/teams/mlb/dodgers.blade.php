@@ -385,52 +385,52 @@
         <!-- Resto del contenido de la página -->
     </header>  
     <body>
-    <div class="banner">
-        <div class="slides">
-            <div class="slide active">
-                <img src="{{ asset('img/banner1.jpg') }}" alt="Imagen 1">
-                <div class="text-overlay">
-                    <h1>Texto sobre la Imagen 1</h1>
-                    <p>Descripción adicional para la Imagen 1</p>
+    <section>
+        <div class="container">
+            <div class="left-side">
+                <img src="{{ asset('img/ladodgers.png') }}" class="star" alt="">
+                <div class="title">
+                    <h1>Los Angeles Dodgers</h1>
+                    <h2>Selecciona tu estilo</h2>
                 </div>
             </div>
-            <div class="slide">
-                <img src="{{ asset('img/banner3.jpg') }}" alt="Imagen 2">
-                <div class="text-overlay1">
-                    <h1>Texto sobre la Imagen 1</h1>
-                    <p>Descripción adicional para la Imagen 1</p>
-                </div>
-            </div>
-            <div class="slide">
-                <img src="{{ asset('img/banner7.webp') }}" alt="Imagen 2">
-                <div class="text-overlay2">
-                    <h1>Texto sobre la Imagen 1</h1>
-                    <p>Descripción adicional para la Imagen 1</p>
-                </div>
-            </div>
-            <div class="slide">
-                <img src="{{ asset('img/banner5.webp') }}" alt="Imagen 3">
-                <div class="text-overlay3">
-                    <h1>Texto sobre la Imagen 1</h1>
-                    <p>Descripción adicional para la Imagen 1</p>
-                </div>
-            </div>
-            <div class="slide">
-                <img src="{{ asset('img/checo.webp') }}" alt="Imagen 3">
-                <div class="text-overlay4">
-                    <h1>Texto sobre la Imagen 1</h1>
-                    <p>Descripción adicional para la Imagen 1</p>
-                </div>
+            <div class="right-side">
+                <p>
+                Gorras de los Dodgers, playeras, sudaderas y más. Gorras planas de Los Angeles Dodgers, curvas, buckets, gorritos, etc.
+                </p>
+
+                <div class="line"></div>
             </div>
         </div>
-    </div>
+        <div class="card-container">
+            <div class="card card-1">
+                <div class="rotation">
+                    <img src="{{ asset('img/capla1.png') }}" alt="" class="img-card image">
+                </div>
+                <div class="color">yellow</div>
+                <span>585 standard gold</span>
+            </div>
+            <div class="card card-2">
+                <div class="rotation">
+                    <img src="{{ asset('img/capla2.png') }}" alt="" class="img-card image">
+                </div>
+                <div class="color">white</div>
+                <span>585 standard gold</span>
+            </div>
+            <div class="card card-3">
+                <div class="rotation">
+                    <img src="{{ asset('img/capla3.png') }}" alt="" class="img-card image">
+                </div>
+                <div class="color">pink</div>
+                <span>750 standard gold</span>
+            </div>
+        </div>
+    </section>
     <section class="section-one">
         <div class="container">
             <div class="left-side">
                 <div class="title">
-                    <h1>    Tu Estilo
-                         <!-- <img src="{{ asset('img/logo.png') }}" alt="" class="star"> -->
-                          <br>      Nuestra Pasión <br>     Gorras para Todos</h1>
+                    <h1>  Los Angeles Dodgers</h1>
                 </div>
 
                 <p class="p">
@@ -441,7 +441,7 @@
 
             </div>
             <div class="right-side pyramid">
-                <img src="{{ asset('img/logo.png') }}" alt="" class="gold glow image">
+                <img src="{{ asset('img/ladodgers.png') }}" alt="" class="gold glow image">
             </div>
         </div>
     </section>
@@ -505,49 +505,7 @@
         </div>
     </section>
 
-    <section>
-        <div class="container">
-            <div class="left-side">
-                <img src="./img/star.png" class="star-s4 star" alt="">
-                <div class="title">
-                    <h1>3 direction</h1>
-                    <h2>Choose your gold</h2>
-                </div>
-            </div>
-            <div class="right-side">
-                <p>
-                    The fineness of gold depends on the amount of ligature - additional metals. 
-                    For example, yellow gold 585* is a metal with the addition 
-                    of 28% silver and 113.5% copper.
-                </p>
 
-                <div class="line"></div>
-            </div>
-        </div>
-        <div class="card-container">
-            <div class="card card-1">
-                <div class="rotation">
-                    <img src="./img/card-1.png" alt="" class="img-card image">
-                </div>
-                <div class="color">yellow</div>
-                <span>585 standard gold</span>
-            </div>
-            <div class="card card-2">
-                <div class="rotation">
-                    <img src="./img/card-2.png" alt="" class="img-card image">
-                </div>
-                <div class="color">white</div>
-                <span>585 standard gold</span>
-            </div>
-            <div class="card card-3">
-                <div class="rotation">
-                    <img src="./img/card-3.png" alt="" class="img-card image">
-                </div>
-                <div class="color">pink</div>
-                <span>750 standard gold</span>
-            </div>
-        </div>
-    </section>
 
     <section class="footer-section">
         <div class="container" style="padding-bottom:5rem;">

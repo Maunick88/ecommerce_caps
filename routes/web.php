@@ -26,3 +26,8 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+// Rutas para MLB
+Route::get('/mlb/dodgers', function () {
+    return view('teams.mlb.dodgers');
+});
