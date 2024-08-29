@@ -44,6 +44,8 @@
         @endforeach
 
         <!-- Mostrar total del carrito -->
-        <div class="total">Total: {{ number_format($total, 2) }} USD</div>
+        <div class="total">Total: {{ number_format($total, 2) }} MXN</div>
+        <!-- Botón para ir al resumen del pedido -->
+        <a href="{{ route('order.summary') }}" class="btn">Ir al Resumen del Pedido</a>
     </div>
 </body>
