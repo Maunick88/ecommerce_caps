@@ -31,3 +31,15 @@ require __DIR__.'/auth.php';
 Route::get('/mlb/dodgers', function () {
     return view('teams.mlb.dodgers');
 });
+
+Route::get('/mlb/mets', function () {
+    return view('teams.mlb.mets');
+});
+
+Route::get('/mlb/redsox', function () {
+    return view('teams.mlb.redsox');
+});
+
+Route::get('/mlb/marlins', function () {
+    return view('teams.mlb.marlins');
+});
