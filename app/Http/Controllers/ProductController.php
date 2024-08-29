@@ -17,11 +17,22 @@ class ProductController extends Controller
     //productos dodgers
     public function showDodgersProducts()
     {
-        // Obtener productos filtrados por category_id = 11
+        // Obtener productos filtrados por category_id
         $products = Product::where('category_id', 11)->get();
 
         // Retornar la vista con los productos
         return view('teams.mlb.dodgers', compact('products'));
+    }
+    //end producto id
+
+    //productos marlins
+    public function showmarlinsProducts()
+    {
+        // Obtener productos filtrados por category_id
+        $products = Product::where('category_id', 12)->get();
+
+        // Retornar la vista con los productos
+        return view('teams.mlb.marlins', compact('products'));
     }
     //end producto id
 

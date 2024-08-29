@@ -27,30 +27,14 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-// Rutas para MLB
-// Route::get('/mlb/dodgers', function () {
-//     return view('teams.mlb.dodgers');
-// });
-
-Route::get('/mlb/mets', function () {
-    return view('teams.mlb.mets');
-});
-
-
-Route::get('/mlb/redsox', function () {
-    return view('teams.mlb.redsox');
-});
-
-Route::get('/mlb/marlins', function () {
-    return view('teams.mlb.marlins');
-});
-
+//vrutas de equipo
 Route::get('/mlb/dodgers', 'App\Http\Controllers\ProductController@showDodgersProducts')->name('dodgers.products');
+Route::get('/mlb/marlins', 'App\Http\Controllers\ProductController@showmarlinsProducts')->name('marlins.products');
+//end rutas de equipo
 
+//cart
 Route::get('/cart', 'App\Http\Controllers\ProductController@viewCart')->name('cart');
-
 Route::post('/cart/add', 'App\Http\Controllers\ProductController@addToCart')->name('cart.add');
-// Endpoint para eliminar un producto del carrito
 Route::post('/cart/remove', 'App\Http\Controllers\ProductController@removeFromCart')->name('cart.remove');
 Route::post('/cart/update', 'App\Http\Controllers\ProductController@updateCart')->name('cart.update');
 

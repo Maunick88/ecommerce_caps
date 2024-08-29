@@ -17,22 +17,22 @@
                 <div class="line"></div>
             </div>
         </div>
-            <div class="card-container">
-        @foreach ($products as $product)
-            <div class="card card-{{ $loop->iteration }}">
-                <div class="rotation">
-                    <img src="{{ asset('img/' . $product->image) }}" alt="" class="img-card image">
+        <div class="card-container">
+            @foreach ($products as $product)
+                <div class="card card-{{ $loop->iteration }}">
+                    <div class="rotation">
+                        <img src="{{ asset('img/' . $product->image) }}" alt="" class="img-card image">
+                    </div>
+                    <div class="color">{{ $product->name }}</div>
+                    <span>{{ $product->description }}</span>
+                    <span>Precio: {{ $product->price }} MXN</span>
+                    <form action="{{ route('cart.add') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+                        <button type="submit" class="btn btn-primary">Agregar al carrito</button>
+                    </form>
                 </div>
-                <div class="color">{{ $product->name }}</div>
-                <span>{{ $product->description }}</span>
-                <span>Precio: {{ $product->price }} MXN</span>
-                <form action="{{ route('cart.add') }}" method="POST">
-                    @csrf
-                    <input type="hidden" name="product_id" value="{{ $product->id }}">
-                    <button type="submit" class="btn btn-primary">Agregar al carrito</button>
-                </form>
-            </div>
-        @endforeach
+            @endforeach
         </div>
     </section>
     <section class="footer-section">
