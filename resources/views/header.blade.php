@@ -345,6 +345,11 @@
                                             </a>
                                         </li>
                                     @endif
+                                    <li>
+                                            <a href="{{ url('/cart') }}">
+                                                Cart
+                                            </a>
+                                        </li>
                                             <!-- Enlace de Logout -->
                                         <li>
                                         <a href="{{ route('logout') }}" 
