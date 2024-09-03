@@ -401,35 +401,35 @@
             <div class="slide active">
                 <img src="{{ asset('img/banner1.jpg') }}" alt="Imagen 1">
                 <div class="text-overlay">
-                    <h1>Texto sobre la Imagen 1</h1>
+                    <h1>Encuentra tu estilo</h1>
                     <p>Descripción adicional para la Imagen 1</p>
                 </div>
             </div>
             <div class="slide">
                 <img src="{{ asset('img/banner3.jpg') }}" alt="Imagen 2">
                 <div class="text-overlay1">
-                    <h1>Texto sobre la Imagen 1</h1>
+                    <h1>Encuentra tu estilo</h1>
                     <p>Descripción adicional para la Imagen 1</p>
                 </div>
             </div>
             <div class="slide">
                 <img src="{{ asset('img/banner7.webp') }}" alt="Imagen 2">
                 <div class="text-overlay2">
-                    <h1>Texto sobre la Imagen 1</h1>
+                    <h1>Encuentra tu estilo</h1>
                     <p>Descripción adicional para la Imagen 1</p>
                 </div>
             </div>
             <div class="slide">
                 <img src="{{ asset('img/banner5.webp') }}" alt="Imagen 3">
                 <div class="text-overlay3">
-                    <h1>Texto sobre la Imagen 1</h1>
+                    <h1>Encuentra tu estilo</h1>
                     <p>Descripción adicional para la Imagen 1</p>
                 </div>
             </div>
             <div class="slide">
                 <img src="{{ asset('img/checo.webp') }}" alt="Imagen 3">
                 <div class="text-overlay4">
-                    <h1>Texto sobre la Imagen 1</h1>
+                    <h1>Encuentra tu estilo</h1>
                     <p>Descripción adicional para la Imagen 1</p>
                 </div>
             </div>

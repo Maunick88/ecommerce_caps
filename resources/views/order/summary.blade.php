@@ -140,32 +140,34 @@
                         <input type="text" class="form-control" name="cvv" placeholder="123">
                     </div>
                 </div>
+<!-- Sección de Pago con PayPal -->
+<div class="payment-section" id="paypal-section" style="display: none;">
+    <h4>Pago con PayPal</h4>
+    <p>Serás redirigido a PayPal para completar tu pago de forma segura.</p>
+    <button type="button" class="btn btn-custom" onclick="simulatePayPal()">Simular Pago con PayPal</button>
+</div>
 
-                <!-- Sección de Pago con PayPal -->
-                <div class="payment-section" id="paypal-section">
-                    <h4>Pago con PayPal</h4>
-                    <p>Serás redirigido a PayPal para completar tu pago de forma segura.</p>
-                </div>
+<script>
+    function simulatePayPal() {
+        // Simula la redirección a PayPal (puedes cambiar la URL por una de prueba o desarrollo)
+        window.location.href = "https://www.sandbox.paypal.com"; // URL de Sandbox de PayPal
+    }
 
-                <button type="submit" class="btn btn-custom">Proceder al Pago</button>
-            </form>
-        </div>
-    </div>
+    // Maneja el cambio de métodos de pago
+    document.getElementById('payment_method').addEventListener('change', function () {
+        var paymentMethod = this.value;
 
-    <script>
-        document.getElementById('payment_method').addEventListener('change', function () {
-            var paymentMethod = this.value;
+        // Ocultar todas las secciones de pago
+        document.getElementById('credit-card-section').style.display = 'none';
+        document.getElementById('paypal-section').style.display = 'none';
 
-            // Ocultar todas las secciones de pago
-            document.getElementById('credit-card-section').style.display = 'none';
-            document.getElementById('paypal-section').style.display = 'none';
+        // Mostrar la sección correspondiente según el método de pago seleccionado
+        if (paymentMethod === 'credit_card') {
+            document.getElementById('credit-card-section').style.display = 'block';
+        } else if (paymentMethod === 'paypal') {
+            document.getElementById('paypal-section').style.display = 'block';
+        }
+    });
+</script>
 
-            // Mostrar la sección correspondiente según el método de pago seleccionado
-            if (paymentMethod === 'credit_card') {
-                document.getElementById('credit-card-section').style.display = 'block';
-            } else if (paymentMethod === 'paypal') {
-                document.getElementById('paypal-section').style.display = 'block';
-            }
-        });
-    </script>
 </body>
