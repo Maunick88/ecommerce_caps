@@ -17,10 +17,10 @@
     font-size: 1.5rem;
     width: 80%;
     margin: 20px auto;
-    border: 1px solid #ddd;
+    border: 1px solid #ff0000;
     border-radius: 8px;
     padding: 20px;
-    background-color: #f9f9f9;
+    background-color: #4beaff54;
 }
 
 .cart-item {
@@ -63,6 +63,15 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 14px;
+    margin-top: 5px;
+}
+.btn-cart
+{
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
     margin-top: 5px;
 }
 
@@ -531,6 +540,10 @@ button:hover{
     opacity: .5;
     color: #b8101a;
 
+}
+h2{
+    padding: 2rem;
+    color: #b8101a;
 }
 
 .line{

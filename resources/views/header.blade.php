@@ -345,6 +345,10 @@
                                             </a>
                                         </li>
                                     @endif
+                                    <x-slot name="content">
+                                    <x-dropdown-link :href="route('profile.edit')">
+                                        {{ __('Perfil') }}
+                                    </x-dropdown-link>  
                                     <li>
                                             <a href="{{ url('/cart') }}">
                                                 Cart
