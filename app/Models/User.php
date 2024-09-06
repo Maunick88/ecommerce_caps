@@ -55,4 +55,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         $this->notify(new CustomVerifyEmail());
     }
+    public function reviews()
+{
+    return $this->hasMany(Review::class);
+}
+
 }

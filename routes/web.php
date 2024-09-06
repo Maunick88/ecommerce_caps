@@ -32,6 +32,9 @@ Route::get('/mlb/dodgers', 'App\Http\Controllers\ProductController@showDodgersPr
 Route::get('/mlb/marlins', 'App\Http\Controllers\ProductController@showmarlinsProducts')->name('marlins.products');
 //end rutas de equipo
 
+Route::post('/reviews', 'App\Http\Controllers\ProductController@storeReview')->name('reviews.store');
+
+
 //cart
 Route::get('/cart', 'App\Http\Controllers\ProductController@viewCart')->name('cart');
 Route::post('/cart/add', 'App\Http\Controllers\ProductController@addToCart')->name('cart.add');

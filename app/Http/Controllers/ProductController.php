@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Review;
 use App\Models\Product;
 use Illuminate\Http\Request;
+
 
 class ProductController extends Controller
 {
@@ -95,6 +97,24 @@ class ProductController extends Controller
         return redirect()->back()->with('success', 'Cantidad actualizada!');
     }
 
-
+    public function storeReview(Request $request)
+    {
+        // Validar los datos de entrada
+        $validated = $request->validate([
+            'product_id' => 'required|exists:products,id',
+            'rating' => 'required|integer|min:1|max:5',
+            'comment' => 'required|string|max:500',
+        ]);
+    
+        // Crear la reseña utilizando el modelo Review
+        Review::create([
+            'user_id' => auth()->id(), // Asegúrate de que el usuario esté autenticado
+            'product_id' => $validated['product_id'],
+            'rating' => $validated['rating'],
+            'comment' => $validated['comment'],
+        ]);
+    
+        return response()->json(['message' => 'Reseña creada con éxito'], 201);
+    }
 }
 
