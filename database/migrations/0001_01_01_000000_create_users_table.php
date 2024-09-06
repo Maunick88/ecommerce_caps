@@ -17,6 +17,10 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('address')->nullable(); // Añadir campo de dirección
+            $table->string('city')->nullable();    // Añadir campo de ciudad
+            $table->string('state')->nullable();   // Añadir campo de estado
+            $table->string('zip')->nullable();     // Añadir campo de código postal
             $table->rememberToken();
             $table->timestamps();
         });
