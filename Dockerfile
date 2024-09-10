@@ -4,11 +4,15 @@ FROM php:8.2-apache
 # Instalar dependencias de PHP
 RUN apt-get update && apt-get install -y \
     libpng-dev libjpeg-dev libfreetype6-dev \
-    libzip-dev git unzip libpq-dev libxml2-dev curl
+    libzip-dev git unzip libpq-dev libxml2-dev curl \
+    && docker-php-ext-install dom xml
 
 # Instalar Node.js y npm
 RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - && \
     apt-get install -y nodejs
+
+    # Instalar Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Configurar extensiones de PHP
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg && \
