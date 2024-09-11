@@ -48,25 +48,6 @@ gsap.from(menu_items.children ,{
 })
 // scripts.js
 
-const slides = document.querySelectorAll('.slide');
-let currentSlide = 0;
-
-function showNextSlide() {
-    const oldSlide = slides[currentSlide];
-    oldSlide.classList.remove('active');
-    oldSlide.classList.add('old');
-
-    currentSlide = (currentSlide + 1) % slides.length;
-    const newSlide = slides[currentSlide];
-    newSlide.classList.add('active');
-
-    setTimeout(() => {
-        oldSlide.classList.remove('old');
-    }, 1000); // Tiempo de transición que coincide con el CSS
-}
-
-setInterval(showNextSlide, 5000); // Cambia la imagen cada 4 segundos
-
 
 gsap.utils.toArray('.star').forEach(star=>{
     gsap.fromTo(star,{

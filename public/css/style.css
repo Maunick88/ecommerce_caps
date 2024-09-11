@@ -17,10 +17,10 @@
     font-size: 1.5rem;
     width: 80%;
     margin: 20px auto;
-    border: 1px solid #ff0000;
+    border: 1px solid burlywood;
     border-radius: 8px;
     padding: 20px;
-    background-color: #4beaff54;
+    background-color: burlywood;
 }
 
 .cart-item {
@@ -36,10 +36,11 @@
 }
 
 .img-card {
+    animation: float 2s infinite; /* Duración de 2 segundos, repite infinitamente */
     width: 100px;
     height: auto;
     border-radius: 8px;
-    margin-right: 15px;
+    margin-right: 200px;
 }
 
 .item-details {
@@ -78,6 +79,10 @@
 .btn-primary {
     background-color: #007bff;
     color: #fff;
+        display: block;
+        width: fit-content; /* Ajusta el ancho del botón al contenido */
+        margin: 10px auto; /* Centra los botones horizontalmente */
+
 }
 
 .btn-danger {
@@ -118,7 +123,6 @@
     border-radius: 5px;
 }
 /*fin cart*/
-/*modal products*/
 .modal {
     position: fixed;
     z-index: 1000;
@@ -130,40 +134,90 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 20px; /* Añadir padding para que el modal no toque los bordes de la pantalla */
 }
 
 .modal-content {
     background-color: #fff;
-    border-radius: 8px;
+    border-radius: 12px; /* Incrementar el redondeo de los bordes para suavizar */
     overflow: hidden;
     display: flex;
     flex-direction: row;
-    max-width: 800px;
-    width: 90%;
+    max-width: 1500px; /* Incrementar el tamaño máximo del modal */
+    width: 95%; /* Ajustar el ancho a un 95% para pantallas más pequeñas */
     position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Añadir sombra para dar profundidad */
 }
 
-.modal-left {
+.modal-left, .modal-right {
     flex: 1;
-    padding: 20px;
-    text-align: center;
+    padding: 50px; /* Incrementar el padding para más espacio */
+    text-align: left; /* Alinear el texto a la izquierda */
 }
 
 .modal-right {
-    flex: 1;
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrar horizontalmente el contenido */
+    justify-content: center; /* Centrar verticalmente el contenido */
+    gap: 20px; /* Añadir espacio entre los elementos */
 }
+
+.product-header {
+    display: flex; /* Muestra el nombre y el precio en una sola línea */
+    align-items: center; /* Alinea verticalmente al centro */
+    gap: 15px; /* Añade espacio entre el nombre y el precio */
+    margin-bottom: 20px; /* Añade un margen inferior para separar del resto del contenido */
+}
+
+#modalName {
+    font-size: 50px; /* Ajusta el tamaño de la fuente del nombre */
+    font-weight: bold;
+    color: #d32f2f; /* Cambia el color del nombre si es necesario */
+    margin: 0; /* Elimina el margen del título */
+}
+
+#modalPrice {
+    font-size: 15px; /* Ajusta el tamaño de la fuente del precio */
+    color: #187401; /* Color del precio */
+    margin: 0; /* Elimina el margen del precio */
+}
+
+input[type="range"] {
+    width: 100%; /* Aumenta el ancho del control deslizante */
+    margin: 10px 0; /* Añade margen para separar de otros elementos */
+    cursor: pointer;
+}
+
+#quantityValue {
+    font-weight: bold; /* Resalta el valor de la cantidad seleccionada */
+    margin-left: 5px; /* Añade margen a la izquierda del valor */
+}
+
+
+#comment {
+    width: 100%; /* Aumenta el ancho del campo de texto para ocupar todo el contenedor */
+    max-width: 900px; /* Define un ancho máximo para el campo de texto */
+    height: 100px; /* Aumenta la altura del campo de texto */
+    padding: 10px; /* Añade espacio interno para mejorar la legibilidad */
+    border: 1px solid #491414;
+    border-radius: 4px;
+    resize: vertical; /* Permite que el usuario ajuste la altura */
+}
+
+
 
 .modal-img {
     max-width: 100%;
     height: auto;
     border-radius: 8px;
+    margin-bottom: 20px; /* Añadir margen inferior para separar la imagen del resto del contenido */
 }
 
 .close {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 15px; /* Ajustar la posición para que esté más cerca del borde superior */
+    right: 15px; /* Ajustar la posición para que esté más cerca del borde derecho */
     color: #aaa;
     font-size: 28px;
     font-weight: bold;
@@ -177,14 +231,16 @@
 .quantity-controls {
     display: flex;
     align-items: center;
-    margin-top: 10px;
+    margin-top: 15px; /* Incrementar margen superior */
+    gap: 10px; /* Añadir espacio entre los botones y el input */
 }
 
 .quantity-controls button {
     background-color: #eee;
     border: none;
-    padding: 5px 10px;
+    padding: 8px 12px; /* Incrementar el tamaño del botón */
     cursor: pointer;
+    border-radius: 4px; /* Suavizar los bordes de los botones */
 }
 
 .quantity-controls button:hover {
@@ -192,36 +248,50 @@
 }
 
 .quantity-controls input {
-    width: 50px;
+    width: 60px; /* Incrementar el ancho del input */
     text-align: center;
     margin: 0 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
+
 .rating {
     display: flex;
     flex-direction: row-reverse;
     justify-content: center;
+    margin-top: 15px;
 }
 
 .rating input {
-    display: none;
+    display: none; /* Oculta los elementos de entrada */
 }
 
 .rating label {
+    font-size: 24px;
+    color: #ccc; /* Color de las estrellas sin seleccionar */
     cursor: pointer;
-    width: 20px;
-    height: 20px;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>') no-repeat center;
-    background-size: contain;
     transition: color 0.3s;
 }
 
 .rating input:checked ~ label,
 .rating label:hover,
 .rating label:hover ~ label {
-    color: gold;
+    color: gold; /* Color de las estrellas seleccionadas */
 }
+.filled-star {
+    color: gold; /* Color de estrellas llenas */
+}
+
+.empty-star {
+    color: lightgray; /* Color de estrellas vacías */
+}
+
+.review {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
 
 /*end modal products*/
 
@@ -697,37 +767,37 @@ h2{
     border-radius: 5px;
     padding: 1rem;
     cursor: pointer;
-    transition: .8s ease;
-}
+    transition: transform 1s ease, background 0.8s ease, box-shadow 0.3s ease; /* Añadida la transición de sombra */}
 
 .img-card{
     max-width: 350px;
     max-height: 350px;
     width: 100%;
+    margin-left: 50px;
     object-fit: cover;
 }
 
 
 .card-1{
     background: linear-gradient(to right,
-    #545d60 , #283048
+    #3f4c6b80 , #535e7981
     );
 }
 .card-2{
     background: linear-gradient(to right,
-    #4b485a , #1f1c2c
+    #3f4c6b80 , #535e7981
     );
 }
 .card-3{
     background: linear-gradient(to right,
-    #3f4c6b , #535e79
+    #3f4c6b80 , #535e7981
     );
 }
 
-.card:hover{
-    background: linear-gradient(to left,
-    #3a7bd5, #00d2ff
-    );
+.card:hover {
+    background: linear-gradient(to left, #3a7bd58e, #00d0ff8c);
+    transform: scale(10) rotate(2deg); /* Aumenta el tamaño y añade una ligera rotación */
+    box-shadow: 0 50px 50px rgba(0, 0, 0, 0.2); /* Agrega una sombra suave */
 }
 
 
@@ -739,12 +809,12 @@ h2{
 
 .card span{
     text-transform: uppercase;
-    font-weight: 200;
-    color: #fff;
+    font-weight: 300;
+    color: #000000;
 }
 
 .card:hover .color{
-    color: #fff;
+    color: #000000;
 }
 
 .txt{

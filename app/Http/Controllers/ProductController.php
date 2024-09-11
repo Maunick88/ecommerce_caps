@@ -20,7 +20,7 @@ class ProductController extends Controller
     public function showDodgersProducts()
     {
         // Obtener productos filtrados por category_id
-        $products = Product::where('category_id', 11)->get();
+        $products = Product::where('category_id', 1)->get();
 
         // Retornar la vista con los productos
         return view('teams.mlb.dodgers', compact('products'));
@@ -49,23 +49,25 @@ class ProductController extends Controller
         return view('cart', compact('products', 'cart'));
     }
 
-    // Método para agregar un producto al carrito
     public function addToCart(Request $request)
     {
         $cart = session()->get('cart', []);
-
         $productId = $request->input('product_id');
+        $quantity = $request->input('quantity', 1); // Obtén la cantidad, por defecto 1
+    
+        // Agrega o actualiza el producto en el carrito
         if (!isset($cart[$productId])) {
-            $cart[$productId] = ["quantity" => 1];
+            $cart[$productId] = ["quantity" => $quantity];
         } else {
-            $cart[$productId]['quantity']++;
+            $cart[$productId]['quantity'] += $quantity; // Actualiza la cantidad sumándola
         }
-
+    
         session()->put('cart', $cart);
-
+    
         return response()->json(['message' => 'Producto agregado al carrito!', 'cart' => $cart]);
     }
-
+    
+    
     // Método para eliminar un producto del carrito
     public function removeFromCart(Request $request)
     {
@@ -84,37 +86,54 @@ class ProductController extends Controller
     public function updateCart(Request $request)
     {
         $cart = session()->get('cart', []);
-
         $productId = $request->input('product_id');
         $quantity = $request->input('quantity');
-
-        // Validar que la cantidad sea mayor a cero
-        if ($quantity > 0 && isset($cart[$productId])) {
+    
+        // Verifica que la cantidad sea un número válido y mayor a 0
+        if ($quantity <= 0) {
+            return response()->json(['message' => 'La cantidad debe ser mayor que 0.'], 400);
+        }
+    
+        // Actualiza la cantidad del producto en el carrito
+        if (isset($cart[$productId])) {
             $cart[$productId]['quantity'] = $quantity;
             session()->put('cart', $cart);
+    
+            return response()->json(['message' => 'Cantidad actualizada correctamente.']);
         }
-
-        return redirect()->back()->with('success', 'Cantidad actualizada!');
+    
+        return response()->json(['message' => 'Producto no encontrado en el carrito.'], 404);
     }
 
     public function storeReview(Request $request)
     {
-        // Validar los datos de entrada
-        $validated = $request->validate([
-            'product_id' => 'required|exists:products,id',
-            'rating' => 'required|integer|min:1|max:5',
-            'comment' => 'required|string|max:500',
-        ]);
-    
-        // Crear la reseña utilizando el modelo Review
-        Review::create([
-            'user_id' => auth()->id(), // Asegúrate de que el usuario esté autenticado
-            'product_id' => $validated['product_id'],
-            'rating' => $validated['rating'],
-            'comment' => $validated['comment'],
-        ]);
-    
-        return response()->json(['message' => 'Reseña creada con éxito'], 201);
+      // Validar la entrada
+    $request->validate([
+        'product_id' => 'required|exists:products,id',
+        'rating' => 'required|integer|min:1|max:5',
+        'comment' => 'required|string|max:500'
+    ]);
+
+    // Lógica para guardar la reseña
+    Review::create([
+        'product_id' => $request->product_id,
+        'rating' => $request->rating,
+        'comment' => $request->comment,
+        'user_id' => auth()->id(), // O cualquier lógica para obtener el ID del usuario
+    ]);
+
+    // Devuelve una respuesta JSON
+    return response()->json(['message' => '¡Gracias por tu reseña!']);
+
     }
+
+    public function getProductReviews($productId)
+{
+    // Obtén las reseñas para el producto
+    $reviews = Review::where('product_id', $productId)->get();
+
+    // Devuelve las reseñas en formato JSON
+    return response()->json($reviews);
 }
 
+}

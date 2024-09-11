@@ -401,40 +401,58 @@
             <div class="slide active">
                 <img src="{{ asset('img/banner1.jpg') }}" alt="Imagen 1">
                 <div class="text-overlay">
-                    <h1>Encuentra tu estilo</h1>
-                    <p>Descripción adicional para la Imagen 1</p>
+                <div class="title">
+                    <h1>Tu Estilo Nuestra Pasión Gorras para Todos</h1>
                 </div>
+                </div>
+                <a href="{{ url('/mlb/dodgers') }}" class="button-link">
+                    <button>Comienza a comprar</button>
+                </a>
             </div>
             <div class="slide">
-                <img src="{{ asset('img/banner3.jpg') }}" alt="Imagen 2">
+                <img src="{{ asset('img/banner_mexico.webp') }}" alt="Imagen 2">
                 <div class="text-overlay1">
-                    <h1>Encuentra tu estilo</h1>
-                    <p>Descripción adicional para la Imagen 1</p>
+                    <div class="title">
+                    <h1>MEXICO M</h1>
+                    <p>Captruamos la escencia de lo que signicia ser mexicano </p>
                 </div>
+                </div>
+                <a href="{{ url('/mlb/dodgers') }}" class="button-link1">
+                    <button>Comienza a comprar</button>
+                </a>
             </div>
             <div class="slide">
-                <img src="{{ asset('img/banner7.webp') }}" alt="Imagen 2">
+                <img src="{{ asset('img/checo.webp') }}" alt="Imagen 3">                
                 <div class="text-overlay2">
-                    <h1>Encuentra tu estilo</h1>
-                    <p>Descripción adicional para la Imagen 1</p>
+                <div class="title">
+                    <p>Gorras curvas New Era del piloto mexicano Sergio Perez con la escudería Oracle Red Bull Racing.</p>
                 </div>
+                </div>
+                <a href="{{ url('/mlb/dodgers') }}" class="button-link2">
+                    <button>Comienza a comprar</button>
+                </a>
             </div>
             <div class="slide">
-                <img src="{{ asset('img/banner5.webp') }}" alt="Imagen 3">
+                <img src="{{ asset('img/banner_nfl.webp') }}" alt="Imagen 3">
                 <div class="text-overlay3">
-                    <h1>Encuentra tu estilo</h1>
-                    <p>Descripción adicional para la Imagen 1</p>
+                <div class="title">
+                    <h1>SIDELINE</h1>
+                    <p>Una nueva temporada esta por dar inicio y en MauCaps estamos preparados para el momento del kick off</p>
                 </div>
-            </div>
-            <div class="slide">
-                <img src="{{ asset('img/checo.webp') }}" alt="Imagen 3">
-                <div class="text-overlay4">
-                    <h1>Encuentra tu estilo</h1>
-                    <p>Descripción adicional para la Imagen 1</p>
                 </div>
+                <a href="{{ url('/mlb/dodgers') }}" class="button-link3">
+                    <button>Comienza a comprar</button>
+                </a>
             </div>
         </div>
+        <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+        <button class="next" onclick="changeSlide(1)">&#10095;</button>
     </div>
+    <div class="barra1">
+            <div class="text-wrapper">
+                <span>DISFRUTA <strong>ENVÍO GRATIS</strong> A PARTIR DE <strong>$649</strong> </span>
+            </div>
+        </div>
     <section class="section-one">
         <div class="container">
             <div class="left-side">
@@ -563,6 +581,47 @@
     @include('footer')   
 
 </body>
+<script>
+    const slides = document.querySelectorAll('.slide');
+    let currentSlide = 0;
+    let slideInterval;
+
+    function showNextSlide() {
+        const oldSlide = slides[currentSlide];
+        oldSlide.classList.remove('active');
+        oldSlide.classList.add('old');
+
+        currentSlide = (currentSlide + 1) % slides.length;
+        const newSlide = slides[currentSlide];
+        newSlide.classList.add('active');
+
+        setTimeout(() => {
+            oldSlide.classList.remove('old');
+        }, 1000); // Tiempo de transición que coincide con el CSS
+    }
+
+    function changeSlide(n) {
+        clearInterval(slideInterval); // Detiene el auto-reproducción al cambiar manualmente
+        const oldSlide = slides[currentSlide];
+        oldSlide.classList.remove('active');
+        oldSlide.classList.add('old');
+
+        currentSlide = (currentSlide + n + slides.length) % slides.length; // Cambia de slide
+        const newSlide = slides[currentSlide];
+        newSlide.classList.add('active');
+
+        setTimeout(() => {
+            oldSlide.classList.remove('old');
+        }, 1000);
+
+        slideInterval = setInterval(showNextSlide, 5000); // Reinicia el auto-reproducción
+    }
+
+    // Inicia la auto-reproducción de las diapositivas
+    slideInterval = setInterval(showNextSlide, 5000); // Cambia la imagen cada 5 segundos
+</script>
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js" ></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js" ></script>
 <script src="{{ asset('js/script.js') }}"></script>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -33,6 +34,8 @@ Route::get('/mlb/marlins', 'App\Http\Controllers\ProductController@showmarlinsPr
 //end rutas de equipo
 
 Route::post('/reviews', 'App\Http\Controllers\ProductController@storeReview')->name('reviews.store');
+Route::get('/reviews/{productId}', 'App\Http\Controllers\ProductController@getProductReviews')->name('reviews.get');
+
 
 
 //cart
