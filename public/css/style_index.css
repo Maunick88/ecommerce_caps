@@ -760,22 +760,67 @@ button:hover{
 }
 
 .menu{
+    color: white;
     display: flex;
     max-width: 400px;
     flex-wrap: wrap;
     gap: 1rem;
 }
+#white{
+    color: white;
+}
 
+#red{
+    font-family: 'Bungee Tint', sans-serif;
+ 
+}
 .menu li{
+    color: white;
     width: 30%;
 }
 
 .footer-section{
     height: auto;
+    background-color: #0057b333;
 }
 
 footer{
     padding: 3rem;
+    background-color: #0057b333;
+
+}
+
+.section-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh; /* Altura completa de la vista */
+    padding: 20px; /* Margen alrededor de la sección */
+}
+
+.seccion{
+    background-color: #0057b333; /* Fondo para la tarjeta */
+    padding: 30px; /* Espaciado interno */
+    margin: 20px auto; /* Margen alrededor de la tarjeta y centrar horizontalmente */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para dar efecto de tarjeta */
+    width: 80%; /* Define un ancho base del 80% del contenedor padre */
+    max-width: 1200px; /* Ancho máximo para limitar la expansión */
+    height: auto; /* Altura automática para expandirse según el contenido */
+    
+}
+.titulo {
+    font-size: 2rem;
+    text-align: center; /* Centra el título horizontalmente */
+    margin-bottom: 20px; /* Espacio debajo del título */
+}
+
+.texto {
+    font-size: 1.2rem;
+    text-align: justify; /* Justifica el texto para que se ajuste al ancho */
+    line-height: 1.6; /* Espacio entre líneas para mejorar la legibilidad */
+    margin: 0 auto; /* Centra el texto dentro del contenedor */
+    max-width: 800px; /* Limita el ancho máximo del texto */
 }
 
 .center{
