@@ -33,6 +33,7 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 //vrutas de equipo
+Route::get('/', 'App\Http\Controllers\ProductController@showIndexProducts')->name('index');
 Route::get('/mlb/dodgers', 'App\Http\Controllers\ProductController@showDodgersProducts')->name('dodgers.products');
 Route::get('/mlb/marlins', 'App\Http\Controllers\ProductController@showmarlinsProducts')->name('marlins.products');
 //end rutas de equipo

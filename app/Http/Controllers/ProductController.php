@@ -15,7 +15,14 @@ class ProductController extends Controller
         $products = Product::all();
 
     }
+    public function showIndexProducts()
+    {
+        // Obtener productos filtrados por category_id
+        $products = Product::where('category_id', 1)->get();
 
+        // Retornar la vista con los productos
+        return view('welcome', compact('products'));
+    }
     //productos dodgers
     public function showDodgersProducts()
     {

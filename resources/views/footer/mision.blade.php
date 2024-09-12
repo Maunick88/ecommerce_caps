@@ -1,4 +1,4 @@
-@include('headerIndex')   
+@include('headerFooter')   
 <body class="bg-star">
 <section class="section-wrapper">
         <div class="seccion">
