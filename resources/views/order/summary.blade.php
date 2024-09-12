@@ -115,59 +115,76 @@
                     <label for="country">País:</label>
                     <input type="text" class="form-control" name="country" required>
                 </div>
-                <!-- Selección de Método de Pago -->
-                <div class="form-group">
-                    <label for="payment_method">Método de Pago:</label>
-                    <select name="payment_method" id="payment_method" class="form-control" required>
-                        <option value="credit_card">Tarjeta de Crédito</option>
-                        <option value="paypal">PayPal</option>
-                    </select>
-                </div>
+                <div id="paypalButtons"></div>
+                <script src="https://www.paypal.com/sdk/js?client-id=Ac45sG1IbQ_L21stWgWlZhGWjuyp_VJ12c5YVk-HLj1_MNDNgHJMPcJWT64Gc0JlMvk8qb81Z_8e37uq&currency=MXN"></script>
 
-                <!-- Sección de Pago con Tarjeta de Crédito -->
-                <div class="payment-section" id="credit-card-section">
-                    <h4>Pago con Tarjeta de Crédito</h4>
-                    <div class="form-group">
-                        <label for="card_number">Número de Tarjeta:</label>
-                        <input type="text" class="form-control" name="card_number" placeholder="1234 5678 9012 3456">
-                    </div>
-                    <div class="form-group">
-                        <label for="expiry_date">Fecha de Expiración:</label>
-                        <input type="text" class="form-control" name="expiry_date" placeholder="MM/YY">
-                    </div>
-                    <div class="form-group">
-                        <label for="cvv">CVV:</label>
-                        <input type="text" class="form-control" name="cvv" placeholder="123">
-                    </div>
-                </div>
-<!-- Sección de Pago con PayPal -->
-<div class="payment-section" id="paypal-section" style="display: none;">
-    <h4>Pago con PayPal</h4>
-    <p>Serás redirigido a PayPal para completar tu pago de forma segura.</p>
-    <button type="button" class="btn btn-custom" onclick="simulatePayPal()">Simular Pago con PayPal</button>
-</div>
+                <script>
+    const total = {{ $total }}; // Obtén el total desde la variable blade
 
-<script>
-    function simulatePayPal() {
-        // Simula la redirección a PayPal (puedes cambiar la URL por una de prueba o desarrollo)
-        window.location.href = "https://www.sandbox.paypal.com"; // URL de Sandbox de PayPal
-    }
+    // Obtener los productos del carrito
+    const cartItems = [
+        @foreach ($products as $product)
+        {
+            product_id: {{ $product->id }},
+            quantity: {{ $cart[$product->id]['quantity'] }},
+            price: {{ $product->price }}
+        },
+        @endforeach
+    ];
 
-    // Maneja el cambio de métodos de pago
-    document.getElementById('payment_method').addEventListener('change', function () {
-        var paymentMethod = this.value;
+    paypal.Buttons({
+        createOrder: function(data, actions) {
+            return actions.order.create({
+                purchase_units: [{
+                    amount: {
+                        value: total.toFixed(2) // Redondea a dos decimales el total
+                    }
+                }]
+            });
+        },
+        onApprove: function(data, actions) {
+            return actions.order.capture().then(function(details) {
+                alert('Transacción completada por ' + details.payer.name.given_name);
 
-        // Ocultar todas las secciones de pago
-        document.getElementById('credit-card-section').style.display = 'none';
-        document.getElementById('paypal-section').style.display = 'none';
+                // Obtén la información de los campos de envío
+                const name = document.querySelector('input[name="name"]').value;
+                const address = document.querySelector('input[name="address"]').value;
+                const city = document.querySelector('input[name="city"]').value;
+                const postal_code = document.querySelector('input[name="postal_code"]').value;
+                const country = document.querySelector('input[name="country"]').value;
 
-        // Mostrar la sección correspondiente según el método de pago seleccionado
-        if (paymentMethod === 'credit_card') {
-            document.getElementById('credit-card-section').style.display = 'block';
-        } else if (paymentMethod === 'paypal') {
-            document.getElementById('paypal-section').style.display = 'block';
+                // Realiza una solicitud AJAX para guardar la orden y los ítems en la base de datos
+                fetch('{{ route('order.save') }}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}' // Agrega el token CSRF para seguridad
+                    },
+                    body: JSON.stringify({
+                        name: name,
+                        address: address,
+                        city: city,
+                        postal_code: postal_code,
+                        country: country,
+                        total: total,
+                        paypal_transaction_id: details.id, // ID de la transacción de PayPal
+                        items: cartItems // Agrega los ítems del carrito
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Orden guardada exitosamente.');
+                    } else {
+                        console.error('Error al guardar la orden:', data.error);
+                        alert('Error al guardar la orden: ' + JSON.stringify(data.error));
+                    }
+                })
+                .catch(error => console.error('Error de red:', error));
+
+            });
         }
-    });
+    }).render('#paypalButtons');
 </script>
 
 </body>

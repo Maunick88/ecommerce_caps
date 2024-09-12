@@ -7,6 +7,11 @@ use App\Http\Controllers\ProductController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/order/paypal', function () {
+    return view('order.paypal');
+});
+Route::post('/order/save', 'App\Http\Controllers\PaymentController@saveOrder')->name('order.save');
+
 
 Route::get('/footer/mision', function () {
     return view('footer.mision');

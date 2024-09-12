@@ -17,7 +17,13 @@ return new class extends Migration
             $table->decimal('total_price', 10, 2);
             $table->enum('status', ['pending', 'completed', 'shipped', 'canceled']);
             $table->timestamps();
-        
+            $table->string('name')->nullable();
+            $table->string('address')->nullable();
+            $table->string('city')->nullable();
+            $table->string('postal_code')->nullable();
+            $table->string('country')->nullable();
+            $table->decimal('total_price', 10, 2)->default(0);
+            $table->string('paypal_transaction_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users'); 
         });
         
