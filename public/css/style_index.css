@@ -6,10 +6,6 @@
     box-sizing: border-box;
 }
 
-@font-face {
-    font-family: bm;
-    src: url(./font/BlackMango-Black.otf);
-}
 /*imagenes*/
 .product-gallery {
     display: flex;

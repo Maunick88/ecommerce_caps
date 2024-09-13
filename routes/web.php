@@ -12,6 +12,10 @@ Route::get('/order/paypal', function () {
 });
 Route::post('/order/save', 'App\Http\Controllers\PaymentController@saveOrder')->name('order.save');
 
+Route::get('/thanks', function () {
+    return view('order.thanks');
+})->name('order.thanks');
+
 
 Route::get('/footer/mision', function () {
     return view('footer.mision');

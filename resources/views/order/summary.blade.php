@@ -143,9 +143,17 @@
             });
         },
         onApprove: function(data, actions) {
+            // Mostrar el mensaje de "Procesando pago"
+            Swal.fire({
+                title: 'Procesando Pago',
+                text: 'Por favor, espera mientras se procesa tu pago.',
+                allowOutsideClick: false,
+                backdrop: true, // Oscurece el fondo
+                didOpen: () => {
+                    Swal.showLoading(); // Muestra un icono de carga
+                }
+            });
             return actions.order.capture().then(function(details) {
-                alert('Transacción completada por ' + details.payer.name.given_name);
-
                 // Obtén la información de los campos de envío
                 const name = document.querySelector('input[name="name"]').value;
                 const address = document.querySelector('input[name="address"]').value;
@@ -174,7 +182,18 @@
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
-                        alert('Orden guardada exitosamente.');
+                        // Usar SweetAlert para mostrar una única alerta de éxito
+                        Swal.fire({
+                            title: '¡Éxito!',
+                            text: 'Tu acción se ha guardo exitosamente.',
+                            icon: 'success',
+                            confirmButtonText: 'Aceptar'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                // Redirigir a la vista de agradecimiento
+                                window.location.href = '{{ route('order.thanks') }}'; // Ruta hacia la vista de agradecimiento
+                            }
+                        });
                     } else {
                         console.error('Error al guardar la orden:', data.error);
                         alert('Error al guardar la orden: ' + JSON.stringify(data.error));
@@ -186,5 +205,6 @@
         }
     }).render('#paypalButtons');
 </script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </body>

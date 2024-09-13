@@ -6,10 +6,7 @@
     box-sizing: border-box;
 }
 
-@font-face {
-    font-family: bm;
-    src: url(./font/BlackMango-Black.otf);
-}
+
 /*Estilos del cart*/
 .cart-container {
     font-family: "New Amsterdam", sans-serif;
@@ -368,6 +365,7 @@ body{
 }
 
 .menu-items{
+    color: #000;
     display: flex;
     gap: 2rem;
 }
@@ -397,6 +395,7 @@ a:hover{
 }
 /* Estilo del contenedor del ícono y el texto */
 .icon-text {
+    color: #000;
     font-family: "New Amsterdam", sans-serif;
     display: flex;
     align-items: center; /* Alinea el texto verticalmente en el centro de la imagen */
@@ -822,7 +821,7 @@ h2{
 }
 
 .txt span{
-    color: #0152fc;
+    color: #000000;
 }
 
 .sides{
