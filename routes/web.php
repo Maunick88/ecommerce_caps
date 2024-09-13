@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SupportTicketController;
+use App\Http\Controllers\PaymentController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -12,10 +14,9 @@ Route::get('/order/paypal', function () {
 });
 Route::post('/order/save', 'App\Http\Controllers\PaymentController@saveOrder')->name('order.save');
 
-Route::get('/thanks', function () {
-    return view('order.thanks');
-})->name('order.thanks');
+Route::get('/thanks', [PaymentController::class, 'thanks'])->name('order.thanks');
 
+Route::get('/order/details/{id}', [PaymentController::class, 'details'])->name('order.details');
 
 Route::get('/footer/mision', function () {
     return view('footer.mision');
@@ -26,8 +27,19 @@ Route::get('/footer/vision', function () {
 Route::get('/footer/valores', function () {
     return view('footer.valores');
 });
-
-
+Route::get('/footer/objetivos', function () {
+    return view('footer.obj');
+});
+Route::get('/footer/acerca', function () {
+    return view('footer.acerca');
+});
+Route::get('/footer/soporte', function () {
+    return view('footer.soporte');
+});
+Route::middleware(['auth'])->group(function () {
+    Route::get('/support/create', [SupportTicketController::class, 'create'])->name('support.create');
+    Route::post('/support/store', [SupportTicketController::class, 'store'])->name('support.store');
+});
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');

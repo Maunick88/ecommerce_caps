@@ -36,6 +36,10 @@
         <div class="container-custom">
             <h1 class="thank-you-message">¡Gracias por tu compra!</h1>
             <p class="sub-message">Tu transacción ha sido exitosa.</p>
+             <!-- Mostrar el ID de la transacción de PayPal -->
+            @if(request()->query('paypal_transaction_id'))
+                <p class="transaction-id"># Ticket: <strong>{{ request()->query('paypal_transaction_id') }}</strong></p>
+            @endif
         </div>
     </div>
 

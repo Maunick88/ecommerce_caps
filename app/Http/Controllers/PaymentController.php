@@ -8,6 +8,7 @@ use App\Models\OrderItem;
 use App\Models\Product;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use App\Notifications\OrderConfirmation; // Asegúrate de que esta línea esté presente
 
 class PaymentController extends Controller
 {
@@ -59,5 +60,39 @@ class PaymentController extends Controller
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }
+    }
+
+        public function thanks(Request $request)
+    {
+        // Obtener el usuario actual
+        $user = $request->user();
+       
+        // Obtener el ID de la transacción de PayPal desde la URL
+        $paypalTransactionId = $request->query('paypal_transaction_id');
+
+        // Encontrar la orden por ID de transacción
+        $order = Order::where('paypal_transaction_id', $paypalTransactionId)->first();
+
+        if ($order && $user) {
+            // Enviar notificación de confirmación de pedido
+            $user->notify(new OrderConfirmation($order));
+        }
+
+        // Renderizar la vista de agradecimiento
+        return view('order.thanks', compact('order'));
+    }
+
+    public function details($id)
+    {
+        // Encontrar la orden por su ID
+        $order = Order::findOrFail($id);
+
+        // Verificar si la orden pertenece al usuario actual (opcional, pero recomendado)
+        if (auth()->id() !== $order->user_id) {
+            abort(403, 'No tienes permiso para ver esta orden.');
+        }
+
+        // Renderizar la vista de detalles de la orden
+        return view('order.details', compact('order'));
     }
 }

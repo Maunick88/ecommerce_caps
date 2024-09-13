@@ -257,11 +257,35 @@
 }
 
 .swiper-slide {
+    background-color: #000;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+.transaction-id{
+    color: #000;
+}
 
+.form-control{
+    font-size: 25PX; /* Tamaño del texto más grande */
+
+}
+.card {
+    background-color: #04458ba2;
+    width:  100%;
+    border-radius: 8px; /* Bordes redondeados */
+}
+
+.card-body {
+    padding: 1rem;
+    text-align: center;
+    font-size: 2rem; /* Tamaño del texto más grande */
+}
+.card-header {
+    padding: 3rem;
+    text-align: center;
+    font-size: 3rem; /* Tamaño del texto más grande */
+}
 .value-card {
     background: #fff;
     padding: 20px;
@@ -269,7 +293,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
     width: 100%;
-    max-width: 300px;
+    max-width: 750px;
 }
 
 .value-card:hover {
@@ -1235,6 +1259,7 @@ footer{
 }
 
 .section-wrapper {
+    
     display: flex;
     justify-content: center;
     align-items: center;

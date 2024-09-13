@@ -4,7 +4,7 @@
         <div class="container sides">
             <div class="left-side">
                 <div class="logo">
-                    <img src="./img/star.png" class="star" alt="">
+                    <img src="{{ asset('img/logo.png') }}" class="star" alt="">
                     <div id="white">Frost Inv.</div>
                 </div>
 
@@ -18,10 +18,10 @@
                 <ul class="menu">
                     <li><a id="white" href="{{ url('/footer/mision') }}">Mision</a></li>
                     <li><a id="white" href="{{ url('/footer/vision') }}">Vision</a></li>
-                    <li><a id="white" href="{{ url('/footer/valores') }}">help</a></li>
-                    <li><a id="white" href="{{ url('/footer/valores') }}">client</a></li>
-                    <li><a id="white" href="{{ url('/footer/valores') }}">about</a></li>
-                    <li><a id="white" href="{{ url('/footer/valores') }}">support</a></li>
+                    <li><a id="white" href="{{ url('/footer/valores') }}">Valores</a></li>
+                    <li><a id="white" href="{{ url('/footer/objetivos') }}">Objetivos</a></li>
+                    <li><a id="white" href="{{ url('/footer/acerca') }}">Acerca de</a></li>
+                    <li><a id="white" href="{{ url('/footer/soporte') }}">Soporte</a></li>
                     <li><a id="white" href="{{ url('/footer/valores') }}">blog</a></li>
                     <li><a id="white" href="{{ url('/footer/valores') }}">services</a></li>
                     <li><a id="white" href="{{ url('/footer/valores') }}">jobs</a></li>

@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ asset('css/style_footer.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
     <header>
@@ -43,7 +43,7 @@
                                     @endif
                                     <x-slot name="content">
                                     <x-dropdown-link :href="route('profile.edit')" class="perfil-link">
-                                        {{ __('Perfil') }}
+                                    <i class="fas fa-user-shield"></i> <!-- Ícono de usuario con escudo -->
                                     </x-dropdown-link>
                                     <li>
                                             <a href="{{ url('/cart') }}">

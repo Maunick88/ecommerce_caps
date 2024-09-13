@@ -41,7 +41,7 @@
             <div class="container sides">
                 <div class="left-side">
                     <div class="logo">
-                        <img src="./img/star.png" class="star" alt="">
+                        <img src="{{ asset('img/logo.png') }}" class="star" alt="">
                         <div>Frost Inv.</div>
                     </div>
 

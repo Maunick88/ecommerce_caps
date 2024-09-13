@@ -133,77 +133,97 @@
     ];
 
     paypal.Buttons({
-        createOrder: function(data, actions) {
-            return actions.order.create({
-                purchase_units: [{
-                    amount: {
-                        value: total.toFixed(2) // Redondea a dos decimales el total
-                    }
-                }]
-            });
-        },
-        onApprove: function(data, actions) {
-            // Mostrar el mensaje de "Procesando pago"
-            Swal.fire({
-                title: 'Procesando Pago',
-                text: 'Por favor, espera mientras se procesa tu pago.',
-                allowOutsideClick: false,
-                backdrop: true, // Oscurece el fondo
-                didOpen: () => {
-                    Swal.showLoading(); // Muestra un icono de carga
+    createOrder: function(data, actions) {
+        return actions.order.create({
+            purchase_units: [{
+                amount: {
+                    value: total.toFixed(2) // Redondea a dos decimales el total
                 }
-            });
-            return actions.order.capture().then(function(details) {
-                // Obtén la información de los campos de envío
-                const name = document.querySelector('input[name="name"]').value;
-                const address = document.querySelector('input[name="address"]').value;
-                const city = document.querySelector('input[name="city"]').value;
-                const postal_code = document.querySelector('input[name="postal_code"]').value;
-                const country = document.querySelector('input[name="country"]').value;
+            }]
+        });
+    },
+    onApprove: function(data, actions) {
+        Swal.fire({
+            title: 'Procesando Pago',
+            text: 'Por favor, espera mientras se procesa tu pago.',
+            allowOutsideClick: false,
+            backdrop: true,
+            didOpen: () => {
+                Swal.showLoading();
+            }
+        });
 
-                // Realiza una solicitud AJAX para guardar la orden y los ítems en la base de datos
-                fetch('{{ route('order.save') }}', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}' // Agrega el token CSRF para seguridad
-                    },
-                    body: JSON.stringify({
-                        name: name,
-                        address: address,
-                        city: city,
-                        postal_code: postal_code,
-                        country: country,
-                        total: total,
-                        paypal_transaction_id: details.id, // ID de la transacción de PayPal
-                        items: cartItems // Agrega los ítems del carrito
-                    })
+        return actions.order.capture().then(function(details) {
+            const name = document.querySelector('input[name="name"]').value;
+            const address = document.querySelector('input[name="address"]').value;
+            const city = document.querySelector('input[name="city"]').value;
+            const postal_code = document.querySelector('input[name="postal_code"]').value;
+            const country = document.querySelector('input[name="country"]').value;
+
+            // Realiza la solicitud AJAX
+            fetch('{{ route('order.save') }}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                body: JSON.stringify({
+                    name: name,
+                    address: address,
+                    city: city,
+                    postal_code: postal_code,
+                    country: country,
+                    total: total,
+                    paypal_transaction_id: details.id, // ID de la transacción de PayPal
+                    items: cartItems
                 })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        // Usar SweetAlert para mostrar una única alerta de éxito
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Mostrar SweetAlert con el ID de transacción de PayPal
+                    Swal.fire({
+                        title: '¡Pago Exitoso!',
+                        html: 'Tu pago se ha realizado exitosamente.<br># Ticket: <strong>' + details.id + '</strong>',
+                        icon: 'success',
+                        confirmButtonText: 'Aceptar'
+                    }).then((result) => {
                         Swal.fire({
-                            title: '¡Éxito!',
-                            text: 'Tu acción se ha guardo exitosamente.',
-                            icon: 'success',
-                            confirmButtonText: 'Aceptar'
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                // Redirigir a la vista de agradecimiento
-                                window.location.href = '{{ route('order.thanks') }}'; // Ruta hacia la vista de agradecimiento
-                            }
-                        });
-                    } else {
-                        console.error('Error al guardar la orden:', data.error);
-                        alert('Error al guardar la orden: ' + JSON.stringify(data.error));
-                    }
-                })
-                .catch(error => console.error('Error de red:', error));
-
+                        title: 'Pago procesado',
+                        text: 'Generando ticket espere porfavor.',
+                        allowOutsideClick: false,
+                        backdrop: true,
+                        didOpen: () => {
+                            Swal.showLoading();
+                        }
+                    });
+                        if (result.isConfirmed) {
+                            window.location.href = '{{ route('order.thanks') }}' + '?paypal_transaction_id=' + details.id;
+                        }
+                    });
+                } else {
+                    console.error('Error al guardar la orden:', data.error);
+                    Swal.fire({
+                        title: 'Error',
+                        text: 'Error al guardar la orden: ' + JSON.stringify(data.error),
+                        icon: 'error',
+                        confirmButtonText: 'Cerrar'
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error de red:', error);
+                Swal.fire({
+                    title: 'Error de Red',
+                    text: 'Hubo un error al procesar tu solicitud. Inténtalo de nuevo.',
+                    icon: 'error',
+                    confirmButtonText: 'Cerrar'
+                });
             });
-        }
-    }).render('#paypalButtons');
+        });
+    }
+}).render('#paypalButtons');
+
 </script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
