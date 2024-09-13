@@ -20,6 +20,13 @@ Route::get('/thanks', function () {
 Route::get('/footer/mision', function () {
     return view('footer.mision');
 });
+Route::get('/footer/vision', function () {
+    return view('footer.vision');
+});
+Route::get('/footer/valores', function () {
+    return view('footer.valores');
+});
+
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');

@@ -10,7 +10,7 @@
         </div>
     </section>
 </body>
-@include('footer')   
+@include('footerStar')   
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js" ></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js" ></script>

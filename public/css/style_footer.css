@@ -246,6 +246,58 @@
     border-radius: 5px;
 }
 /*fin cart*/
+#white{
+    color:white;
+}
+
+ /* Estilos para el contenedor Swiper */
+ .swiper-container {
+    width: 100%;
+    padding: 20px 0;
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.value-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 300px;
+}
+
+.value-card:hover {
+    background-color: #f0f0f0;
+}
+
+.value-card img {
+    width: 250px;
+    height: 250px;
+    margin-bottom: 10px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.value-title {
+    font-size: 1.5em;
+    color: #333;
+    margin: 0;
+}
+
+.value-description {
+    font-size: 1em;
+    color: #666;
+}
+
+.swiper-button-next, .swiper-button-prev {
+    color: #333;
+}
 
 h1{
     font-family: bm;
@@ -340,7 +392,7 @@ body{
     display: flex;
     justify-content: center; /* Centra los elementos del menú horizontalmente */
     align-items: center;
-    gap: 2rem; /* Espacio entre los elementos del menú */
+    gap: 10rem; /* Espacio entre los elementos del menú */
     list-style: none;
     margin: 0 auto; /* Centra la lista dentro de la barra de navegación */
 }
@@ -364,6 +416,7 @@ body{
 }
 
 .menu-items li a:hover {
+    color: #000;
     text-decoration: underline;
     transform: scale(1.1);
 }

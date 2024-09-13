@@ -350,11 +350,11 @@
                                     @endif
                                     <x-slot name="content">
                                     <x-dropdown-link :href="route('profile.edit')">
-                                        {{ __('Perfil') }}
+                                    <i class="fas fa-user-shield"></i> <!-- Ícono de usuario con escudo -->
                                     </x-dropdown-link>
                                     <li>
                                             <a href="{{ url('/cart') }}">
-                                                Cart
+                                            <i class="fas fa-shopping-cart"></i> <!-- Ícono de carrito de Font Awesome -->
                                             </a>
                                         </li>
                                             <!-- Enlace de Logout -->
@@ -362,8 +362,8 @@
                                         <a href="{{ route('logout') }}" 
                                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();" 
                                         > <span class="icon-text">
-                                            Cerrar sesión
-                                            </span>
+                                        <i class="fas fa-sign-out-alt"></i> <!-- Ícono de cerrar sesión -->
+                                        </span>
                                         </a>
                                         <form id="logout-form" method="POST" action="{{ route('logout') }}" style="display: none;">
                                             @csrf
@@ -374,7 +374,7 @@
                                         <a
                                             href="{{ route('login') }}"
                                             > <span class="icon-text">
-                                            Iniciar sesión
+                                            <i class="fas fa-user-circle"></i> <!-- Ícono de usuario en un círculo -->
                                             </span>
                                         </a>
                                     </li>
@@ -384,7 +384,7 @@
                                             <a
                                                 href="{{ route('register') }}"
                                                 > <span class="icon-text">
-                                                Crear cuenta
+                                                <i class="fas fa-user-plus"></i> <!-- Ícono de usuario con signo más, ideal para "Registrar" o "Crear cuenta" -->
                                                 </span>
                                             </a>
                                         </li>

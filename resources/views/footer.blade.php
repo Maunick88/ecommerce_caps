@@ -17,7 +17,7 @@
             <div class="right-side">
                 <ul class="menu">
                     <li><a id="black" href="{{ url('/footer/mision') }}">Mision</a></li>
-                    <li><a id="black" href="#">company</a></li>
+                    <li><a id="black" href="{{ url('/footer/vision') }}">Vision</a></li>
                     <li><a id="black" href="#">help</a></li>
                     <li><a id="black" href="#">client</a></li>
                     <li><a id="black" href="#">about</a></li>

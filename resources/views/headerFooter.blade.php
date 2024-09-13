@@ -10,6 +10,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ asset('css/style_footer.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+
 </head>
 
     <header>
@@ -45,7 +47,8 @@
                                     </x-dropdown-link>
                                     <li>
                                             <a href="{{ url('/cart') }}">
-                                                Cart
+                                            <i class="fas fa-shopping-cart"></i> <!-- Ícono de carrito de Font Awesome -->
+                                                
                                             </a>
                                         </li>
                                             <!-- Enlace de Logout -->
@@ -53,8 +56,8 @@
                                         <a href="{{ route('logout') }}" 
                                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();" 
                                         > <span class="icon-text">
-                                            Cerrar sesión
-                                            </span>
+                                        <i class="fas fa-sign-out-alt"></i> <!-- Ícono de cerrar sesión -->
+                                        </span>
                                         </a>
                                         <form id="logout-form" method="POST" action="{{ route('logout') }}" style="display: none;">
                                             @csrf
@@ -65,7 +68,7 @@
                                         <a
                                             href="{{ route('login') }}"
                                             > <span class="icon-text">
-                                            Iniciar sesión
+                                            <i class="fas fa-user-circle"></i> <!-- Ícono de usuario en un círculo -->
                                             </span>
                                         </a>
                                     </li>
@@ -75,7 +78,7 @@
                                             <a
                                                 href="{{ route('register') }}"
                                                 > <span class="icon-text">
-                                                Crear cuenta
+                                                <i class="fas fa-user-plus"></i> <!-- Ícono de usuario con signo más, ideal para "Registrar" o "Crear cuenta" -->
                                                 </span>
                                             </a>
                                         </li>

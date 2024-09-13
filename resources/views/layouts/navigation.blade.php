@@ -43,7 +43,7 @@
 
                     <x-slot name="content">
                         <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Perfil') }}
+                        <i class="fas fa-user-shield"></i> <!-- Ícono de usuario con escudo -->
                         </x-dropdown-link>
 
                         <!-- Authentication -->
