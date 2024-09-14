@@ -15,19 +15,16 @@
                 </p>
             </div>
             <div class="right-side">
-                <ul class="menu">
-                    <li><a id="black" href="{{ url('/footer/mision') }}">Mision</a></li>
-                    <li><a id="black" href="{{ url('/footer/vision') }}">Vision</a></li>
-                    <li><a id="black" href="#">help</a></li>
-                    <li><a id="black" href="#">client</a></li>
-                    <li><a id="black" href="#">about</a></li>
-                    <li><a id="black" href="#">support</a></li>
-                    <li><a id="black" href="#">blog</a></li>
-                    <li><a id="black" href="#">services</a></li>
-                    <li><a id="black" href="#">jobs</a></li>
-                    <li><a id="black" href="#">docs</a></li>
-                    <li><a id="black" href="#">news</a></li>
-                    <li><a id="black" href="#">privacy policy</a></li>
+            <ul class="menu">
+                    <li><a id="black" href="{{ url('/footer/mision') }}">Misión</a></li>
+                    <li><a id="black" href="{{ url('/footer/vision') }}">Visión</a></li>
+                    <li><a id="black" href="{{ url('/footer/valores') }}">Valores</a></li>
+                    <li><a id="black" href="{{ url('/footer/objetivos') }}">Objetivos</a></li>
+                    <li><a id="black" href="{{ url('/footer/acerca') }}">Acerca de</a></li>
+                    <li><a id="black" href="{{ url('/footer/soporte') }}">Soporte</a></li>
+                    <li><a id="black" href="{{ url('/footer/docs') }}">Documentación</a></li>
+                    <li><a id="black" href="{{ url('/footer/news') }}">Noticias</a></li>
+                    <li><a id="black" href="{{ url('/footer/policy') }}">Política de Privacidad</a></li>
                 </ul>
             </div>
         </div>

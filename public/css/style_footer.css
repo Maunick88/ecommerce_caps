@@ -271,17 +271,21 @@
 
 }
 .card {
-    background-color: #04458ba2;
-    width:  100%;
+    background-color: #ffffffe8;
+    width:  1000px;
     border-radius: 8px; /* Bordes redondeados */
 }
 
 .card-body {
+    font-family: 'Poppins', sans-serif;
+    color: #000;
     padding: 1rem;
     text-align: center;
     font-size: 2rem; /* Tamaño del texto más grande */
 }
 .card-header {
+    font-family: 'Poppins', sans-serif;
+    color: #000;
     padding: 3rem;
     text-align: center;
     font-size: 3rem; /* Tamaño del texto más grande */
@@ -367,13 +371,13 @@ body{
     width: 100%; /* Asegura que la barra ocupe todo el ancho */
 }
 .barra1 {
-    background-color: #0461da;
+    background-color: #ff696181;
     color: white;
     font-size: 16px;
     /* font-weight: bold; */
     position: relative;
     z-index: 10;
-    box-shadow: 0 2px 20px rgba(1, 190, 248, 0.489);
+    box-shadow: 0 2px 20px rgba(255, 0, 0, 0.489);
     display: flex;
     justify-content: center; /* Centra horizontalmente */
     align-items: center; /* Centra verticalmente */

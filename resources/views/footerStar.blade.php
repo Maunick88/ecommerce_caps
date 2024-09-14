@@ -15,19 +15,16 @@
                 </p>
             </div>
             <div class="right-side">
-                <ul class="menu">
-                    <li><a id="white" href="{{ url('/footer/mision') }}">Mision</a></li>
-                    <li><a id="white" href="{{ url('/footer/vision') }}">Vision</a></li>
+            <ul class="menu">
+                    <li><a id="white" href="{{ url('/footer/mision') }}">Misión</a></li>
+                    <li><a id="white" href="{{ url('/footer/vision') }}">Visión</a></li>
                     <li><a id="white" href="{{ url('/footer/valores') }}">Valores</a></li>
                     <li><a id="white" href="{{ url('/footer/objetivos') }}">Objetivos</a></li>
                     <li><a id="white" href="{{ url('/footer/acerca') }}">Acerca de</a></li>
                     <li><a id="white" href="{{ url('/footer/soporte') }}">Soporte</a></li>
-                    <li><a id="white" href="{{ url('/footer/valores') }}">blog</a></li>
-                    <li><a id="white" href="{{ url('/footer/valores') }}">services</a></li>
-                    <li><a id="white" href="{{ url('/footer/valores') }}">jobs</a></li>
-                    <li><a id="white" href="{{ url('/footer/valores') }}">docs</a></li>
-                    <li><a id="white" href="{{ url('/footer/valores') }}">news</a></li>
-                    <li><a id="white" href="{{ url('/footer/valores') }}">privacy policy</a></li>
+                    <li><a id="white" href="{{ url('/footer/docs') }}">Documentación</a></li>
+                    <li><a id="white" href="{{ url('/footer/news') }}">Noticias</a></li>
+                    <li><a id="white" href="{{ url('/footer/policy') }}">Política de Privacidad</a></li>
                 </ul>
             </div>
         </div>
@@ -36,10 +33,10 @@
     <footer>
         <div class="container">
             <div class="left-side" >
-                <p id="white"> &copy; copyright 2022 . All rights reserved</p>
+                <p id="black"> &copy; copyright 2022 . All rights reserved</p>
             </div>
             <div class="right-side center">
-                <p id="white">Term and Conditions</p>
+                <p id="black">Term and Conditions</p>
             </div>
         </div>
     </footer>

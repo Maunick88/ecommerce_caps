@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SupportTicketController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\NewsController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -40,6 +41,14 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/support/create', [SupportTicketController::class, 'create'])->name('support.create');
     Route::post('/support/store', [SupportTicketController::class, 'store'])->name('support.store');
 });
+Route::get('/footer/docs', function () {
+    return view('footer.docs');
+});
+Route::get('/footer/news', [NewsController::class, 'index'])->name('news');
+Route::get('/footer/policy', function () {
+    return view('footer.privacy_policy');
+})->name('privacy_policy');
+
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
