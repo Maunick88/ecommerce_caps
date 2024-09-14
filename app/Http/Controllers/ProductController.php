@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Review;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Models\Category;
+use Illuminate\Support\Facades\Storage;
 
 
 class ProductController extends Controller
@@ -15,6 +17,8 @@ class ProductController extends Controller
         $products = Product::all();
 
     }
+
+    
     public function showIndexProducts()
     {
         // Obtener productos filtrados por category_id
@@ -142,5 +146,62 @@ class ProductController extends Controller
     // Devuelve las reseñas en formato JSON
     return response()->json($reviews);
 }
+
+public function store(Request $request)
+{
+    // Validar los datos entrantes
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'description' => 'required|string',
+        'price' => 'required|numeric|min:0',
+        'category_id' => 'required|exists:categories,id',
+        'image' => 'required|string|max:255', // Validación del texto de la imagen
+    ]);
+
+    // Crear el producto
+    Product::create([
+        'name' => $request->name,
+        'description' => $request->description,
+        'price' => $request->price,
+        'category_id' => $request->category_id,
+        'image' => $request->image, // Guardar el texto ingresado
+       ]);
+
+    // Redirigir de nuevo al dashboard con un mensaje de éxito
+    return redirect()->route('dashboard')->with('success', 'Producto agregado exitosamente.');
+}
+
+public function edit($id)
+{
+    $product = Product::findOrFail($id);
+    $categories = Category::all();
+    return view('products.edit', compact('product', 'categories'));
+}
+
+public function update(Request $request, $id)
+{
+    // Validar los datos entrantes
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'description' => 'required|string',
+        'price' => 'required|numeric|min:0',
+        'category_id' => 'required|exists:categories,id',
+        'image' => 'required|string|max:255', // Validación del texto de la imagen
+    ]);
+
+    $product = Product::findOrFail($id);
+    $product->update($request->all());
+
+    return redirect()->route('dashboard')->with('success', 'Producto actualizado exitosamente.');
+}
+
+public function destroy($id)
+{
+    $product = Product::findOrFail($id);
+    $product->delete();
+
+    return redirect()->route('dashboard')->with('success', 'Producto eliminado exitosamente.');
+}
+
 
 }

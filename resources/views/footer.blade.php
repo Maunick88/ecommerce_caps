@@ -9,10 +9,9 @@
                 </div>
 
                 <p class="p" id="red">
-                    We are based in Los Angeles, USA.<br>
-                    our motto is -investing in knowledge <br>
-                    pays the best dividends.
-                </p>
+                Desde Cuautitlán, MEX,<br>
+                Levamos el conocimiento al siguiente nivel con cada gorra. <br>
+                ‘Invertir en conocimiento da los mejores dividendos’.</p>
             </div>
             <div class="right-side">
             <ul class="menu">

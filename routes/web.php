@@ -6,6 +6,15 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SupportTicketController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\DashboardController;
+use Carbon\Carbon;
+use App\Models\Order;
+use App\Models\OrderItem;
+use App\Models\SupportTicket;
+use App\Models\Product;
+use App\Models\Category;
+use App\Models\Review;
+use App\Models\User;
 
 Route::get('/', function () {
     return view('welcome');
@@ -52,14 +61,50 @@ Route::get('/footer/policy', function () {
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
-
 Route::get('/dashboard', function () {
     if (auth()->check() && auth()->user()->role === 'admin') {
-        return view('dashboard');
+        $orders = Order::with(['items', 'items.product'])->get();
+        $orderItems = OrderItem::with(['order', 'product'])->get();
+        $supportTickets = SupportTicket::with(['user', 'order'])->get();
+        $products = Product::with(['category', 'reviews'])->get();
+        $categories = Category::with('products')->get();
+        $reviews = Review::with(['product', 'user'])->get();
+        $users = User::with('reviews')->get();
+
+        // Datos para gráficos adicionales
+        $salesByMonth = Order::selectRaw('YEAR(created_at) year, MONTH(created_at) month, SUM(total_price) as total')
+            ->groupBy('year', 'month')
+            ->orderBy('year', 'asc')  // Asegurar ordenación ascendente
+            ->orderBy('month', 'asc')  // Asegurar ordenación ascendente
+            ->get();
+
+        $categoriesDistribution = $categories->mapWithKeys(function ($category) {
+            return [$category->name => $category->products->count()];
+        });
+
+        $ratingDistribution = Review::selectRaw('rating, COUNT(*) as count')
+            ->groupBy('rating')
+            ->orderBy('rating', 'asc')  // Asegurar ordenación ascendente
+            ->get()
+            ->pluck('count', 'rating');
+
+        $activeUsers = User::withCount('reviews')
+            ->orderBy('reviews_count', 'desc')  // Asegurar ordenación descendente para los más activos
+            ->take(5)
+            ->get();
+
+        return view('dashboard', compact(
+            'orders', 'orderItems', 'supportTickets', 'products', 'categories', 'reviews', 'users',
+            'salesByMonth', 'categoriesDistribution', 'ratingDistribution', 'activeUsers'
+        ));
     }
+    
     return redirect('/')->with('error', 'Acceso denegado.');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::post('/products', [ProductController::class, 'store'])->name('products.store');
+
+Route::resource('products', ProductController::class);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
