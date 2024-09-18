@@ -15,7 +15,31 @@
                         <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{{ __('Nombre del Producto') }}</label>
                         <input type="text" id="name" name="name" value="{{ $product->name }}" class="w-full mt-1 p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
                     </div>
-                    <!-- Repite los campos de descripción, precio, categoría, imagen -->
+                    
+                    <div class="mb-6">
+                        <label for="description" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{{ __('Descripción') }}</label>
+                        <textarea id="description" name="description" class="w-full mt-1 p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>{{ $product->description }}</textarea>
+                    </div>
+
+                    <div class="mb-6">
+                        <label for="price" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{{ __('Precio') }}</label>
+                        <input type="number" step="0.01" id="price" name="price" value="{{ $product->price }}" class="w-full mt-1 p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+                    </div>
+
+                    <div class="mb-6">
+                        <label for="category_id" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{{ __('Categoría') }}</label>
+                        <select id="category_id" name="category_id" class="w-full mt-1 p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+                            @foreach($categories as $category)
+                                <option value="{{ $category->id }}" {{ $product->category_id == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="mb-6">
+                        <label for="image" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{{ __('Nombre de la Imagen') }}</label>
+                        <input type="text" id="image" name="image" value="{{ $product->image }}" class="w-full mt-1 p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+                    </div>
+
                     <div class="flex justify-end">
                         <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg font-semibold transition duration-200">{{ __('Actualizar Producto') }}</button>
                     </div>

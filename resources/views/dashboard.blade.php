@@ -1,3 +1,16 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<link rel="stylesheet" href="{{ asset('css/styledash.css') }}">
+<link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- Estilos Personalizados -->
+
+</head>
+<body>
+
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
@@ -5,120 +18,216 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
+    <div class="dashboard-container">
 
-                                <!-- Indicadores Numéricos (KPIs) -->
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-                        <div class="bg-blue-100 p-4 rounded shadow text-center">
-                            <h4 class="text-lg text-blue-800 font-semibold">{{ __('Total de Usuarios') }}</h4>
-                            <p class="text-2xl text-blue-800">{{ $users->count() }}</p>
-                        </div>
-                        <div class="bg-green-100 p-4 rounded shadow text-center">
-                            <h4 class="text-lg text-green-800 font-semibold">{{ __('Órdenes Completadas') }}</h4>
-                            <p class="text-2xl text-green-800">{{ $orders->where('status', 'completed')->count() }}</p>
-                        </div>
-                        <div class="bg-red-100 p-4 rounded shadow text-center">
-                            <h4 class="text-lg text-red-800 font-semibold">{{ __('Tickets de Soporte Abiertos') }}</h4>
-                            <p class="text-2xl text-red-800">{{ $supportTickets->where('status', 'open')->count() }}</p>
-                        </div>
-                    </div>
-
-                    <!-- Container for Pie Chart -->
-                    <h2 class="mt-6 text-lg font-semibold text-gray-800 dark:text-gray-200">{{ __('Product Categories Distribution') }}</h2>
-                    <canvas id="categoriesChart" width="400" height="200"></canvas>
-
-                    <!-- Container for Line Chart (Sales by Month) -->
-                    <h2 class="mt-6 text-lg font-semibold text-gray-800 dark:text-gray-200">{{ __('Monthly Sales') }}</h2>
-                    <canvas id="salesChart" width="400" height="200"></canvas>
-
-                    <!-- Container for Radar Chart (Rating Distribution) -->
-                    <h2 class="mt-6 text-lg font-semibold text-gray-800 dark:text-gray-200">{{ __('Product Ratings Distribution') }}</h2>
-                    <canvas id="ratingsChart" width="400" height="200"></canvas>
-
-                    <!-- Container for Horizontal Bar Chart (Active Users) -->
-                    <h2 class="mt-6 text-lg font-semibold text-gray-800 dark:text-gray-200">{{ __('Top Active Users') }}</h2>
-                    <canvas id="activeUsersChart" width="400" height="200"></canvas>
-
-                    <!-- Aquí van las tablas existentes -->
-                    <!-- Mantén las tablas que ya creaste para ver detalles en texto -->
-           
-                    <!-- Formulario Mejorado para Crear un Nuevo Producto -->
-                    <h2 class="mt-6 text-lg font-semibold text-gray-800 dark:text-gray-200">{{ __('Agregar Nuevo Producto') }}</h2>
-                    <form action="{{ route('products.store') }}" method="POST" class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mt-4 max-w-3xl mx-auto">
-                        @csrf
-                        <div class="mb-6">
-                            <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{{ __('Nombre del Producto') }}</label>
-                            <input type="text" id="name" name="name" class="w-full mt-1 p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
-                        </div>
-
-                        <div class="mb-6">
-                            <label for="description" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{{ __('Descripción') }}</label>
-                            <textarea id="description" name="description" class="w-full mt-1 p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" rows="4" required></textarea>
-                        </div>
-
-                        <div class="mb-6">
-                            <label for="price" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{{ __('Precio') }}</label>
-                            <input type="number" step="0.01" id="price" name="price" class="w-full mt-1 p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
-                        </div>
-
-                        <div class="mb-6">
-                            <label for="category_id" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{{ __('Categoría') }}</label>
-                            <select id="category_id" name="category_id" class="w-full mt-1 p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
-                                @foreach($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <div class="mb-6">
-                            <label for="image" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{{ __('Nombre de la Imagen') }}</label>
-                            <input type="text" id="image" name="image" class="w-full mt-1 p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="Ejemplo: imagen.jpg" required>
-                        </div>
-
-                        <div class="flex justify-end">
-                            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg font-semibold transition duration-200">{{ __('Agregar Producto') }}</button>
-                        </div>
-                    </form>
-                    <h2 class="mt-12 text-lg font-semibold text-gray-800 dark:text-gray-200">{{ __('Lista de Productos') }}</h2>
-                    <table class="min-w-full bg-white dark:bg-gray-800 shadow-md rounded-lg mt-4">
-                        <thead>
-                            <tr>
-                                <th class="px-4 py-2 text-left text-sm font-medium text-gray-700 dark:text-gray-300">{{ __('Nombre') }}</th>
-                                <th class="px-4 py-2 text-left text-sm font-medium text-gray-700 dark:text-gray-300">{{ __('Descripción') }}</th>
-                                <th class="px-4 py-2 text-left text-sm font-medium text-gray-700 dark:text-gray-300">{{ __('Precio') }}</th>
-                                <th class="px-4 py-2 text-left text-sm font-medium text-gray-700 dark:text-gray-300">{{ __('Acciones') }}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($products as $product)
-                            <tr>
-                                <td class="border px-4 py-2">{{ $product->name }}</td>
-                                <td class="border px-4 py-2">{{ $product->description }}</td>
-                                <td class="border px-4 py-2">{{ $product->price }} MXN</td>
-                                <td class="border px-4 py-2">
-                                    <a href="{{ route('products.edit', $product->id) }}" class="text-blue-500 hover:underline mr-2">{{ __('Editar') }}</a>
-                                    <form action="{{ route('products.destroy', $product->id) }}" method="POST" class="inline-block" onsubmit="return confirm('{{ __('¿Estás seguro de que deseas eliminar este producto?') }}');">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="text-red-500 hover:underline">{{ __('Eliminar') }}</button>
-                                    </form>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-
-                </div>
+        <!-- KPIs -->
+        <div class="kpi-container">
+            <div class="kpi-card">
+                <h4>{{ __('Total de Usuarios') }}</h4>
+                <p>{{ $users->count() }}</p>
+            </div>
+            <div class="kpi-card">
+                <h4>{{ __('Órdenes Completadas') }}</h4>
+                <p>{{ $orders->where('status', 'completed')->count() }}</p>
+            </div>
+            <div class="kpi-card">
+                <h4>{{ __('Tickets de Soporte Abiertos') }}</h4>
+                <p>{{ $supportTickets->where('status', 'open')->count() }}</p>
             </div>
         </div>
-    </div>
 
+        <!-- Charts -->
+        <div class="charts-container">
+            <div class="chart-card">
+                <h2>{{ __('Product Categories Distribution') }}</h2>
+                <canvas id="categoriesChart"></canvas>
+            </div>
+
+            <div class="chart-card">
+                <h2>{{ __('Monthly Sales') }}</h2>
+                <canvas id="salesChart"></canvas>
+            </div>
+
+            <div class="chart-card">
+                <h2>{{ __('Product Ratings Distribution') }}</h2>
+                <canvas id="ratingsChart"></canvas>
+            </div>
+
+            <div class="chart-card">
+                <h2>{{ __('Top Active Users') }}</h2>
+                <canvas id="activeUsersChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Formulario para Crear Producto -->
+        <div class="form-card">
+            <h2>{{ __('Agregar Nuevo Producto') }}</h2>
+            <form id="add-product-form">
+                @csrf
+                <input type="text" id="product-name" name="name" placeholder="Nombre del Producto" required>
+                <textarea id="product-description" name="description" placeholder="Descripción" rows="3" required></textarea>
+                <input type="number" step="0.01" id="product-price" name="price" placeholder="Precio" required>
+                <select id="product-category" name="category_id" required>
+                    @foreach($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
+                <input type="text" id="product-image" name="image" placeholder="Nombre de la Imagen" required>
+                <button type="button" onclick="addProduct()">{{ __('Agregar Producto') }}</button>
+            </form>
+        </div>
+
+
+        <!-- Lista de Productos -->
+        <div class="table-card">
+            <h2>{{ __('Lista de Productos') }}</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>{{ __('Nombre') }}</th>
+                        <th>{{ __('Descripción') }}</th>
+                        <th>{{ __('Precio') }}</th>
+                        <th>{{ __('Acciones') }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($products as $product)
+                    <tr>
+                        <td>{{ $product->name }}</td>
+                        <td>{{ $product->description }}</td>
+                        <td>{{ $product->price }} MXN</td>
+                        <td>
+                            <a href="{{ route('products.edit', $product->id) }}">{{ __('Editar') }}</a>
+                            <button onclick="confirmDeletion('{{ route('products.destroy', $product->id) }}')">{{ __('Eliminar') }}</button>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+
+        <div class="form-card centered-content">
+            <h2>{{ __('Añadir Nueva Categoría') }}</h2>
+            <form id="add-category-form">
+                @csrf
+                <input type="text" id="category-name" name="name" placeholder="Nombre de la Categoría" required>
+                <button type="button" onclick="addCategory()">{{ __('Guardar Categoría') }}</button>
+            </form>
+
+            <h2>{{ __('Categorías Existentes') }}</h2>
+            <table class="centered-table">
+                <thead>
+                    <tr>
+                        <th>{{ __('Nombre') }}</th>
+                        <th>{{ __('Acciones') }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($categories as $category)
+                    <tr>
+                        <td>{{ $category->name }}</td>
+                        <td>
+                            <button onclick="confirmDeletion('{{ route('categories.destroy', $category->id) }}')">{{ __('Eliminar') }}</button>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-card">
+            <h2>{{ __('Lista de Órdenes') }}</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>{{ __('ID') }}</th>
+                        <th>{{ __('Usuario') }}</th>
+                        <th>{{ __('Total') }}</th>
+                        <th>{{ __('Estado') }}</th>
+                        <th>{{ __('Acciones') }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($orders as $order)
+                    <tr>
+                        <td>{{ $order->id }}</td>
+                        <td>{{ $order->user->name }}</td>
+                        <td>{{ $order->total_price }} MXN</td>
+                        <td>{{ ucfirst($order->status) }}</td>
+                        <td>
+                        <select onchange="changeOrderStatus(this, {{ $order->id }})">
+                            <option value="pending" {{ $order->status === 'pending' ? 'selected' : '' }}>Pendiente</option>
+                            <option value="completed" {{ $order->status === 'completed' ? 'selected' : '' }}>Completada</option>
+                            <option value="shipped" {{ $order->status === 'shipped' ? 'selected' : '' }}>Enviado</option>
+                            <option value="canceled" {{ $order->status === 'canceled' ? 'selected' : '' }}>Cancelada</option>
+                        </select>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+
+    </div>
 
     <!-- Chart.js Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+function changeOrderStatus(selectElement, orderId) {
+    const newStatus = selectElement.value; // Asegúrate de que newStatus coincida exactamente con los valores permitidos
+
+    Swal.fire({
+        title: '{{ __("¿Estás seguro de cambiar el estado?") }}',
+        text: '{{ __("Esta acción actualizará el estado de la orden.") }}',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: '{{ __("Sí, cambiar estado!") }}',
+        cancelButtonText: '{{ __("Cancelar") }}'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            fetch(`{{ url('orders') }}/${orderId}/update-status`, {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ status: newStatus })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Actualiza el texto de la celda de estado correspondiente
+                    const statusCell = selectElement.closest('tr').querySelector('td:nth-child(4)');
+                    statusCell.textContent = newStatus.charAt(0).toUpperCase() + newStatus.slice(1);
+
+                    Swal.fire(
+                        '{{ __("Actualizado!") }}',
+                        '{{ __("El estado de la orden ha sido actualizado.") }}',
+                        'success'
+                    );
+                } else {
+                    Swal.fire(
+                        '{{ __("Error!") }}',
+                        '{{ __("Hubo un problema al actualizar el estado de la orden.") }}',
+                        'error'
+                    );
+                }
+            })
+            .catch(error => {
+                Swal.fire(
+                    '{{ __("Error!") }}',
+                    '{{ __("Hubo un problema al actualizar el estado de la orden.") }}',
+                    'error'
+                );
+            });
+        }
+    });
+}
+
+</script>
+
     <script>
         // Datos para el gráfico de distribución de categorías de productos
         const categoriesData = {
@@ -188,7 +297,141 @@
             options: { indexAxis: 'y', scales: { x: { beginAtZero: true } } }
         });
     </script>
+<script>
+function confirmDeletion(url) {
+    Swal.fire({
+        title: '{{ __("¿Estás seguro?") }}',
+        text: '{{ __("No podrás revertir esta acción.") }}',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: '{{ __("Sí, eliminar!") }}',
+        cancelButtonText: '{{ __("Cancelar") }}'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    _method: 'DELETE'
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    Swal.fire(
+                        '{{ __("Eliminado!") }}',
+                        '{{ __("El registro ha sido eliminado.") }}',
+                        'success'
+                    );
+                    document.querySelector(`button[onclick="confirmDeletion('${url}')"]`).closest('tr').remove();
+                } else {
+                    Swal.fire(
+                        '{{ __("Error!") }}',
+                        '{{ __("Hubo un problema al eliminar el registro.") }}',
+                        'error'
+                    );
+                }
+            })
+            .catch(error => {
+                Swal.fire(
+                    '{{ __("Error!") }}',
+                    '{{ __("Hubo un problema al eliminar el registro.") }}',
+                    'error'
+                );
+            });
+        }
+    });
+}
+</script>
+<script>
+function addProduct() {
+    const formData = new FormData(document.getElementById('add-product-form'));
+
+    fetch('{{ route('products.store') }}', {
+        method: 'POST',
+        headers: {
+            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+        },
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            Swal.fire({
+                title: '{{ __("¡Éxito!") }}',
+                text: data.message,
+                icon: 'success',
+                confirmButtonText: '{{ __("Aceptar") }}'
+            }).then(() => {
+                // Opcional: Recargar la página o limpiar el formulario
+                location.reload();
+            });
+        } else {
+            Swal.fire({
+                title: '{{ __("Error!") }}',
+                text: '{{ __("Hubo un problema al agregar el producto.") }}',
+                icon: 'error',
+                confirmButtonText: '{{ __("Intentar de nuevo") }}'
+            });
+        }
+    })
+    .catch(error => {
+        Swal.fire({
+            title: '{{ __("Error!") }}',
+            text: '{{ __("Hubo un problema al procesar tu solicitud.") }}',
+            icon: 'error',
+            confirmButtonText: '{{ __("Intentar de nuevo") }}'
+        });
+    });
+}
+
+function addCategory() {
+    const formData = new FormData(document.getElementById('add-category-form'));
+
+    fetch('{{ route('categories.store') }}', {
+        method: 'POST',
+        headers: {
+            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+        },
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            Swal.fire({
+                title: '{{ __("¡Éxito!") }}',
+                text: data.message,
+                icon: 'success',
+                confirmButtonText: '{{ __("Aceptar") }}'
+            }).then(() => {
+                // Opcional: Recargar la página o limpiar el formulario
+                location.reload();
+            });
+        } else {
+            Swal.fire({
+                title: '{{ __("Error!") }}',
+                text: '{{ __("Hubo un problema al agregar la categoría.") }}',
+                icon: 'error',
+                confirmButtonText: '{{ __("Intentar de nuevo") }}'
+            });
+        }
+    })
+    .catch(error => {
+        Swal.fire({
+            title: '{{ __("Error!") }}',
+            text: '{{ __("Hubo un problema al procesar tu solicitud.") }}',
+            icon: 'error',
+            confirmButtonText: '{{ __("Intentar de nuevo") }}'
+        });
+    });
+}
+</script>
+
 </x-app-layout>
-
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>

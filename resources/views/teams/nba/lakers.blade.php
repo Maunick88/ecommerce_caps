@@ -1,11 +1,11 @@
-@include('header')  
+@include('header')   
     <body>
     <section>
         <div class="container">
             <div class="left-side">
-                <img src="{{ asset('img/miami.png') }}" class="star" alt="">
+                <img src="{{ asset('img/ladodgers.png') }}" class="star" alt="">
                 <div class="title">
-                    <h1>Miami Marlins</h1>
+                    <h1>LA</h1>
                     <h2>Selecciona tu estilo</h2>
                 </div>
             </div>

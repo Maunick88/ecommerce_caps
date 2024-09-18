@@ -27,27 +27,33 @@ class ProductController extends Controller
         // Retornar la vista con los productos
         return view('welcome', compact('products'));
     }
-    //productos dodgers
-    public function showDodgersProducts()
+
+    public function showProductsByCategoryName($league, $categoryName)
     {
-        // Obtener productos filtrados por category_id
-        $products = Product::where('category_id', 1)->get();
+        // Buscar la categoría por su nombre
+        $category = Category::where('name', $categoryName)->first();
+    
+        // Verificar si la categoría existe
+        if (!$category) {
+            return redirect()->back()->with('error', 'Categoría no encontrada.');
+        }
 
+        // Obtener productos filtrados por el id de la categoría encontrada
+        $products = Product::where('category_id', $category->id)->get();
+
+        // Determinar la liga y construir la ruta de la vista
+        $viewPath = 'teams.' . strtolower($league) . '.' . strtolower($categoryName);
+    
+        // Verificar si la vista existe
+        if (!view()->exists($viewPath)) {
+            return redirect()->back()->with('error', 'Vista no encontrada.');
+        }
+    
         // Retornar la vista con los productos
-        return view('teams.mlb.dodgers', compact('products'));
+        return view($viewPath, compact('products'));
     }
-    //end producto id
-
-    //productos marlins
-    public function showmarlinsProducts()
-    {
-        // Obtener productos filtrados por category_id
-        $products = Product::where('category_id', 12)->get();
-
-        // Retornar la vista con los productos
-        return view('teams.mlb.marlins', compact('products'));
-    }
-    //end producto id
+    
+     
 
     public function viewCart()
     {
@@ -167,8 +173,8 @@ public function store(Request $request)
         'image' => $request->image, // Guardar el texto ingresado
        ]);
 
-    // Redirigir de nuevo al dashboard con un mensaje de éxito
-    return redirect()->route('dashboard')->with('success', 'Producto agregado exitosamente.');
+   // Retornar una respuesta JSON con éxito
+   return response()->json(['success' => true, 'message' => 'Producto agregado exitosamente.']);
 }
 
 public function edit($id)
@@ -200,7 +206,7 @@ public function destroy($id)
     $product = Product::findOrFail($id);
     $product->delete();
 
-    return redirect()->route('dashboard')->with('success', 'Producto eliminado exitosamente.');
+    return response()->json(['success' => true]);
 }
 
 

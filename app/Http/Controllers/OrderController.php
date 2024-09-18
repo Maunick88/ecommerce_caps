@@ -5,6 +5,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Order; // Asegúrate de importar el modelo Order
 use Srmklive\PayPal\Facades\PayPal; // Importa el facade de PayPal
 
 class OrderController extends Controller
@@ -101,6 +102,15 @@ public function capturePayPalPayment(Request $request)
     }
 
     return redirect()->route('order.summary')->with('error', $response['message'] ?? 'Error al capturar el pago.');
+}
+
+public function updateStatus(Request $request, $id)
+{
+    $order = Order::findOrFail($id);
+    $order->status = $request->status;
+    $order->save();
+
+    return response()->json(['success' => true, 'message' => 'Estado de la orden actualizado exitosamente.']);
 }
 
 }

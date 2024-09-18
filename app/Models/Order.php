@@ -25,6 +25,12 @@ class Order extends Model
         'paypal_transaction_id'
     ];
 
+      // Relación con el modelo User
+      public function user()
+      {
+          return $this->belongsTo(User::class);
+      }
+
     // Si usas timestamps automáticos, esta propiedad es opcional
     public $timestamps = true;
         // Relación con los ítems de la orden

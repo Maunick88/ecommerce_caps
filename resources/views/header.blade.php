@@ -132,7 +132,7 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="{{ url('/mlb/mets') }}">
+                    <a href="{{ url('/nba/nba') }}">
                     <span class="icon-text">
                         <img src="{{ asset('img/nba.png') }}" alt="Fútbol" class="icon">
                         NBA
@@ -140,7 +140,7 @@
                     </a>
                     <ul class="dropdown-content">
                         <li>
-                            <a href="{{ url('/mlb/mets') }}">
+                            <a href="{{ url('/nba/lakers') }}">
                                 <span class="icon-text">
                                     <img src="{{ asset('img/lakers.png') }}" alt="Baseball" class="icon">
                                     Los Angeles Lakers
@@ -148,7 +148,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ url('/mlb/mets') }}">
+                            <a href="{{ url('/nba/mets') }}">
                                 <span class="icon-text">
                                     <img src="{{ asset('img/bulls.png') }}" alt="Baseball" class="icon">
                                     Chicago Bulls
@@ -156,7 +156,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ url('/mlb/mets') }}">
+                            <a href="{{ url('/nba/mets') }}">
                                 <span class="icon-text">
                                     <img src="{{ asset('img/raptors.png') }}" alt="Baseball" class="icon">
                                     Timberwolves
@@ -164,7 +164,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ url('/mlb/mets') }}">
+                            <a href="{{ url('/nba/mets') }}">
                                 <span class="icon-text">
                                     <img src="{{ asset('img/grizzlies.png') }}" alt="Baseball" class="icon">
                                     Memphis Grizzlies
@@ -172,7 +172,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ url('/mlb/mets') }}">
+                            <a href="{{ url('/nba/mets') }}">
                                 <span class="icon-text">
                                     <img src="{{ asset('img/hornets.png') }}" alt="Baseball" class="icon">
                                     Charlotte Hornets

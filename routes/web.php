@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SupportTicketController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\NewsController;
@@ -102,9 +104,28 @@ Route::get('/dashboard', function () {
     return redirect('/')->with('error', 'Acceso denegado.');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::post('orders/{id}/update-status', [OrderController::class, 'updateStatus'])->name('orders.updateStatus');
+
 Route::post('/products', [ProductController::class, 'store'])->name('products.store');
 
-Route::resource('products', ProductController::class);
+// Ruta para mostrar el formulario de edición de productos
+Route::get('/products/{id}/edit', [ProductController::class, 'edit'])->name('products.edit');
+
+// Ruta para actualizar el producto
+Route::put('/products/{id}', [ProductController::class, 'update'])->name('products.update');
+
+// Ruta para eliminar el producto
+Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
+
+// Rutas para la gestión de categorías
+Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
+Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
+Route::get('/categories/{id}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
+Route::put('/categories/{id}', [CategoryController::class, 'update'])->name('categories.update');
+Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -116,9 +137,9 @@ require __DIR__.'/auth.php';
 
 //vrutas de equipo
 Route::get('/', 'App\Http\Controllers\ProductController@showIndexProducts')->name('index');
-Route::get('/mlb/dodgers', 'App\Http\Controllers\ProductController@showDodgersProducts')->name('dodgers.products');
-Route::get('/mlb/marlins', 'App\Http\Controllers\ProductController@showmarlinsProducts')->name('marlins.products');
-//end rutas de equipo
+
+Route::get('/{league}/{categoryName}', [ProductController::class, 'showProductsByCategoryName'])->name('products.byCategoryName');
+    //end rutas de equipo
 
 Route::post('/reviews', 'App\Http\Controllers\ProductController@storeReview')->name('reviews.store');
 Route::get('/reviews/{productId}', 'App\Http\Controllers\ProductController@getProductReviews')->name('reviews.get');

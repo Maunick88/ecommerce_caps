@@ -19,7 +19,7 @@
         </div>
         <div class="card-container">
             @foreach ($products as $product)
-                <div class="card card-{{ $loop->iteration }}" onclick="openModal({{ $product->id }})" 
+            <div class="card card-{{ $loop->iteration }}" data-id="{{ $product->id }}" onclick="openModal({{ $product->id }})"
                     data-image="{{ asset('img/' . $product->image) }}"
                     data-name="{{ $product->name }}"
                     data-description="{{ $product->description }}"
@@ -128,9 +128,13 @@
 
 <script>
 function openModal(productId) {
-    // Obtén el elemento de la tarjeta clicada
-    const productCard = document.querySelector(`.card.card-${productId}`);
+    // Obtén el elemento de la tarjeta clicada usando un atributo de datos en lugar de una clase
+    const productCard = document.querySelector(`.card[data-id="${productId}"]`);
 
+    if (!productCard) {
+        console.error('No se pudo encontrar la tarjeta del producto');
+        return;
+    }
     // Obtén los atributos 'data' de la tarjeta
     const image = productCard.getAttribute('data-image');
     const name = productCard.getAttribute('data-name');
