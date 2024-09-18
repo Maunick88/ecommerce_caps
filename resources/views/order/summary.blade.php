@@ -114,6 +114,7 @@
                 <div class="form-group">
                     <label for="country">País:</label>
                     <input type="text" class="form-control" name="country" required>
+                    <label>4032032555329751</label>
                 </div>
                 <div id="paypalButtons"></div>
                 <script src="https://www.paypal.com/sdk/js?client-id=Ac45sG1IbQ_L21stWgWlZhGWjuyp_VJ12c5YVk-HLj1_MNDNgHJMPcJWT64Gc0JlMvk8qb81Z_8e37uq&currency=MXN"></script>

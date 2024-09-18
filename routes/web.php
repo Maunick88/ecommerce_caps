@@ -21,6 +21,12 @@ use App\Models\User;
 Route::get('/', function () {
     return view('welcome');
 });
+
+//resumen de pedido
+Route::get('/order/summary', 'App\Http\Controllers\OrderController@showSummary')->name('order.summary');
+Route::get('/order/capturey', 'App\Http\Controllers\OrderController@capturePayPalPayment')->name('order.capture');
+Route::post('/order/process', 'App\Http\Controllers\OrderController@processOrder')->name('order.process');
+
 Route::get('/order/paypal', function () {
     return view('order.paypal');
 });
@@ -152,10 +158,6 @@ Route::post('/cart/add', 'App\Http\Controllers\ProductController@addToCart')->na
 Route::post('/cart/remove', 'App\Http\Controllers\ProductController@removeFromCart')->name('cart.remove');
 Route::post('/cart/update', 'App\Http\Controllers\ProductController@updateCart')->name('cart.update');
 
-//resumen de pedido
-Route::get('/order/summary', 'App\Http\Controllers\OrderController@showSummary')->name('order.summary');
-Route::get('/order/capturey', 'App\Http\Controllers\OrderController@capturePayPalPayment')->name('order.capture');
-Route::post('/order/process', 'App\Http\Controllers\OrderController@processOrder')->name('order.process');
 
 // Ruta para la confirmación de éxito
 Route::get('/order/success', function () {

@@ -1,5 +1,18 @@
 @include('headerIndex')   
 
+<style>
+        .line {
+            position: absolute;
+            width: 2px;
+            background-color: #00f0ff;
+            box-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff, 0 0 30px #00f0ff;
+            pointer-events: none;
+            opacity: 1;
+            transform-origin: 0 0; /* Hace que la línea gire desde su punto inicial */
+            transition: opacity 0.5s ease;
+        }
+    </style>
+
 <body class="bg-star">
     <div class="banner">
         <div class="slides">
@@ -541,7 +554,47 @@ function initMap() {
     const addProductUrl = "{{ route('cart.add') }}"; // Genera la URL correcta usando Blade
 </script>
 <script src="{{ asset('js/cart.js') }}"></script>
+<script>
+    let lastX = null, lastY = null;
 
+    document.addEventListener('mousemove', (e) => {
+        if (lastX !== null && lastY !== null) {
+            createNeonLine(lastX, lastY, e.pageX, e.pageY);
+        }
+        lastX = e.pageX;
+        lastY = e.pageY;
+    });
+
+    function createNeonLine(x1, y1, x2, y2) {
+        const line = document.createElement('div');
+        line.classList.add('line');
+        document.body.appendChild(line);
+
+        // Calcular la longitud de la línea
+        const length = Math.hypot(x2 - x1, y2 - y1);
+
+        // Posicionar la línea en el primer punto
+        line.style.left = `${x1}px`;
+        line.style.top = `${y1}px`;
+
+        // Rotar la línea hacia el segundo punto
+        const angle = Math.atan2(y2 - y1, x2 - x1) * (180 / Math.PI);
+        line.style.transform = `rotate(${angle}deg)`;
+
+        // Ajustar la longitud de la línea
+        line.style.width = `${length}px`;
+
+        // Desaparecer la línea después de un tiempo
+        setTimeout(() => {
+            line.style.opacity = '0';
+        }, 100);
+
+        // Eliminar la línea del DOM
+        setTimeout(() => {
+            line.remove();
+        }, 600);  // Debe coincidir con la duración de la transición
+    }
+</script>
 <script>
 function openModal(productId) {
     // Obtén el elemento de la tarjeta clicada

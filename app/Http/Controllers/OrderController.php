@@ -5,49 +5,42 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User; // Asegúrate de importar el modelo User
+use App\Models\Product; // Asegúrate de importar el modelo Product
 use App\Models\Order; // Asegúrate de importar el modelo Order
 use Srmklive\PayPal\Facades\PayPal; // Importa el facade de PayPal
 
 class OrderController extends Controller
 {
     public function showSummary()
-    {
-        // Obtener el carrito de la sesión
-        $cart = session()->get('cart', []);
+{
+    // Obtener el carrito de la sesión
+    $cart = session()->get('cart', []);
 
-        // Obtener los detalles de los productos desde la base de datos
-        $productIds = array_keys($cart);
-        $products = \App\Models\Product::whereIn('id', $productIds)->get();
-
-        // Calcular el total del carrito
-        $total = 0;
-        foreach ($products as $product) {
-            $total += $product->price * $cart[$product->id]['quantity'];
-        }
-
-        // Guardar el total en la sesión para usarlo en PayPal
-        session()->put('cart_total', $total);
-
-        return view('order.summary', compact('products', 'cart', 'total'));
+    // Verificar si el carrito está vacío
+    if (empty($cart)) {
+        return redirect()->route('cart')->with('error', 'El carrito está vacío.');
     }
 
-    public function processOrder(Request $request)
-    {
-      // Validar los datos del formulario
-    $request->validate([
-        'name' => 'required|string|max:255',
-        'address' => 'required|string|max:255',
-        'city' => 'required|string|max:255',
-        'postal_code' => 'required|string|max:10',
-        'country' => 'required|string|max:255',
-        'payment_method' => 'required|string|in:credit_card,paypal'
-    ]);
-    if ($request->payment_method === 'paypal') {
-        return $this->createPayPalPayment();
+    // Obtener los IDs de los productos en el carrito
+    $productIds = array_keys($cart);
+
+    // Obtener los productos desde la base de datos
+    $products = Product::whereIn('id', $productIds)->get();
+
+    // Calcular el total del carrito
+    $total = 0;
+    foreach ($products as $product) {
+        $total += $product->price * $cart[$product->id]['quantity'];
     }
 
-    // Aquí puedes añadir la lógica para otros métodos de pago (ej. tarjeta de crédito)
+    // Guardar el total en la sesión para usarlo en PayPal
+    session()->put('cart_total', $total);
+
+    // Retornar la vista de resumen con los productos y el total
+    return view('order.summary', compact('products', 'cart', 'total'));
 }
+
 
 public function createPayPalPayment()
 {
