@@ -36,6 +36,11 @@ Route::get('/thanks', [PaymentController::class, 'thanks'])->name('order.thanks'
 
 Route::get('/order/details/{id}', [PaymentController::class, 'details'])->name('order.details');
 
+Route::post('/reviews', 'App\Http\Controllers\ProductController@storeReview')->name('reviews.store');
+Route::get('/reviews/{productId}', 'App\Http\Controllers\ProductController@getProductReviews')->name('reviews.get');
+
+Route::get('/product/image/{id}', [ProductController::class, 'showImage'])->name('product.image');
+
 Route::get('/footer/mision', function () {
     return view('footer.mision');
 });
@@ -142,13 +147,12 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 //vrutas de equipo
-Route::get('/', 'App\Http\Controllers\ProductController@showIndexProducts')->name('index');
+Route::get('/', 'App\Http\Controllers\ProductController@index')->name('index');
 
 Route::get('/{league}/{categoryName}', [ProductController::class, 'showProductsByCategoryName'])->name('products.byCategoryName');
     //end rutas de equipo
 
-Route::post('/reviews', 'App\Http\Controllers\ProductController@storeReview')->name('reviews.store');
-Route::get('/reviews/{productId}', 'App\Http\Controllers\ProductController@getProductReviews')->name('reviews.get');
+
 
 
 

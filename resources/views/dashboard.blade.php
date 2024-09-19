@@ -72,7 +72,8 @@
                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                     @endforeach
                 </select>
-                <input type="text" id="product-image" name="image" placeholder="Nombre de la Imagen" required>
+                    <input type="file" id="product-image" name="image" accept="image/png, image/jpeg, image/webp" required>
+                    <!-- <input type="text" id="product-image" name="image" placeholder="Nombre de la Imagen" required> -->
                 <button type="button" onclick="addProduct()">{{ __('Agregar Producto') }}</button>
             </form>
         </div>
@@ -172,6 +173,7 @@
 
     <!-- Chart.js Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
     <script>
 function changeOrderStatus(selectElement, orderId) {
     const newStatus = selectElement.value; // Asegúrate de que newStatus coincida exactamente con los valores permitidos

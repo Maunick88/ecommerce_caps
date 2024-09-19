@@ -37,7 +37,8 @@
 
                     <div class="mb-6">
                         <label for="image" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{{ __('Nombre de la Imagen') }}</label>
-                        <input type="text" id="image" name="image" value="{{ $product->image }}" class="w-full mt-1 p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+                        <input type="file" id="product-image" name="image" accept="image/png, image/jpeg, image/webp">
+                    <!-- <input type="file" id="product-image" name="image" accept="image/png, image/jpeg, image/webp" required> -->
                     </div>
 
                     <div class="flex justify-end">

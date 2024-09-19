@@ -20,15 +20,15 @@
         <div class="card-container">
             @foreach ($products as $product)
             <div class="card card-{{ $loop->iteration }}" data-id="{{ $product->id }}" onclick="openModal({{ $product->id }})"
-                    data-image="{{ asset('img/' . $product->image) }}"
+                    data-image="{{ route('product.image', ['id' => $product->id]) }}"   
                     data-name="{{ $product->name }}"
                     data-description="{{ $product->description }}"
                     data-price="{{ $product->price }} MXN">
                     <div class="rotation">
-                        <img src="{{ asset('img/' . $product->image) }}" alt="" class="img-card image">
-                    </div>
+                    <img src="{{ route('product.image', ['id' => $product->id]) }}" alt="{{ $product->name }}" class="img-card image">
+                </div>
                     <div class="color">{{ $product->name }}</div>
-                    <span>{{ $product->description }}</span>
+                    <!-- <span>{{ $product->description }}</span> -->
                     <span>Precio: {{ $product->price }} MXN</span>
                     <form id="add-to-cart-form" action="{{ route('cart.add') }}" method="POST" onsubmit="agregarProductoAlCarrito(event, {{ $product->id }}); return false;">
     @csrf

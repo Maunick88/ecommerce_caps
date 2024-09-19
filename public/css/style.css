@@ -157,18 +157,18 @@
     flex-direction: column;
     align-items: center; /* Centrar horizontalmente el contenido */
     justify-content: center; /* Centrar verticalmente el contenido */
-    gap: 20px; /* Añadir espacio entre los elementos */
+    gap: 10px; /* Añadir espacio entre los elementos */
 }
 
 .product-header {
     display: flex; /* Muestra el nombre y el precio en una sola línea */
     align-items: center; /* Alinea verticalmente al centro */
-    gap: 15px; /* Añade espacio entre el nombre y el precio */
+    gap: 5px; /* Añade espacio entre el nombre y el precio */
     margin-bottom: 20px; /* Añade un margen inferior para separar del resto del contenido */
 }
 
 #modalName {
-    font-size: 50px; /* Ajusta el tamaño de la fuente del nombre */
+    font-size: 30px; /* Ajusta el tamaño de la fuente del nombre */
     font-weight: bold;
     color: #d32f2f; /* Cambia el color del nombre si es necesario */
     margin: 0; /* Elimina el margen del título */
@@ -362,6 +362,10 @@ body{
     width: 50px;
     object-fit: cover;
     margin-right: 4px;
+}
+
+.star{
+    width: 70px;
 }
 
 .menu-items{

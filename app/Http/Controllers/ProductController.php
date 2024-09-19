@@ -15,18 +15,11 @@ class ProductController extends Controller
     {
         // Obtener todos los productos de la base de datos
         $products = Product::all();
-
-    }
-
-    
-    public function showIndexProducts()
-    {
-        // Obtener productos filtrados por category_id
-        $products = Product::where('category_id', 1)->get();
-
-        // Retornar la vista con los productos
         return view('welcome', compact('products'));
+
+
     }
+
 
     public function showProductsByCategoryName($league, $categoryName)
     {
@@ -161,20 +154,44 @@ public function store(Request $request)
         'description' => 'required|string',
         'price' => 'required|numeric|min:0',
         'category_id' => 'required|exists:categories,id',
-        'image' => 'required|string|max:255', // Validación del texto de la imagen
+        'image' => 'required|image|mimes:jpeg,png,jpg,webp|max:2048', // Validación de la imagen
     ]);
 
-    // Crear el producto
+    // Manejar la subida de la imagen
+    if ($request->hasFile('image')) {
+        // Obtener el archivo de imagen
+        $imageFile = $request->file('image');
+        
+        // Leer el contenido binario del archivo
+        $imageContent = file_get_contents($imageFile->getRealPath());
+    }
+
+    // Crear el producto y guardar la imagen como BLOB en la base de datos
     Product::create([
         'name' => $request->name,
         'description' => $request->description,
         'price' => $request->price,
         'category_id' => $request->category_id,
-        'image' => $request->image, // Guardar el texto ingresado
-       ]);
+        'image' => $imageContent, // Guardar el binario de la imagen en la base de datos
+    ]);
 
-   // Retornar una respuesta JSON con éxito
-   return response()->json(['success' => true, 'message' => 'Producto agregado exitosamente.']);
+    // Retornar una respuesta JSON con éxito
+    return response()->json(['success' => true, 'message' => 'Producto agregado exitosamente.']);
+}
+
+public function showImage($id)
+{
+    // Obtener el producto por su ID
+    $product = Product::findOrFail($id);
+
+    // Verificar si el producto tiene una imagen
+    if (!$product->image) {
+        abort(404, 'Imagen no encontrada.');
+    }
+
+    // Retornar la imagen como una respuesta binaria
+    return response($product->image)
+        ->header('Content-Type', 'image/jpeg'); // Cambia el tipo de imagen si es necesario
 }
 
 public function edit($id)
@@ -192,14 +209,37 @@ public function update(Request $request, $id)
         'description' => 'required|string',
         'price' => 'required|numeric|min:0',
         'category_id' => 'required|exists:categories,id',
-        'image' => 'required|string|max:255', // Validación del texto de la imagen
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048', // Validación de la imagen (puede ser nulo si no se actualiza)
     ]);
 
+    // Obtener el producto por su ID
     $product = Product::findOrFail($id);
-    $product->update($request->all());
 
+    // Si se sube una nueva imagen, procesarla
+    if ($request->hasFile('image')) {
+        // Obtener la nueva imagen
+        $imageFile = $request->file('image');
+        
+        // Leer el contenido binario de la imagen
+        $imageContent = file_get_contents($imageFile->getRealPath());
+
+        // Actualizar el campo 'image' con el nuevo contenido binario
+        $product->image = $imageContent;
+    }
+
+    // Actualizar los otros campos
+    $product->name = $request->name;
+    $product->description = $request->description;
+    $product->price = $request->price;
+    $product->category_id = $request->category_id;
+
+    // Guardar los cambios en la base de datos
+    $product->save();
+
+    // Redirigir con un mensaje de éxito
     return redirect()->route('dashboard')->with('success', 'Producto actualizado exitosamente.');
 }
+
 
 public function destroy($id)
 {
