@@ -1,17 +1,19 @@
-@include('header')   
+@include('header')  
     <body>
     <section>
         <div class="container">
             <div class="left-side">
-                <img src="{{ asset('img/ladodgers.png') }}" class="star" alt="">
+                <img src="{{ asset('img/patriots.png') }}" class="star" alt="">
                 <div class="title">
-                    <h1>Los Angeles Dodgers</h1>
+                    <h1>  
+                    New England Patriots
+                    </h1>
                     <h2>Selecciona tu estilo</h2>
                 </div>
             </div>
             <div class="right-side">
                 <p> 
-                Gorras de los Mets para fanáticos apasionados. Descubre nuestras gorras curvas y planas de los New York Mets y luce los colores de tu equipo con estilo.
+                Gorras de los Patriots para los fanáticos más dedicados. Descubre nuestras gorras curvas y planas de los New England Patriots y muestra con orgullo los colores de tu equipo legendario.
                 </p>
 
                 <div class="line"></div>
@@ -28,7 +30,7 @@
                     <img src="{{ route('product.image', ['id' => $product->id]) }}" alt="{{ $product->name }}" class="img-card image">
                     </div>
                     <div class="color">{{ $product->name }}</div>
-                   <!-- <span>{{ $product->description }}</span> -->
+                    <!-- <span>{{ $product->description }}</span> -->
                     <span>$ {{ $product->price }} MXN</span>
                     <form id="add-to-cart-form" action="{{ route('cart.add') }}" method="POST" onsubmit="agregarProductoAlCarrito(event, {{ $product->id }}); return false;">
     @csrf

@@ -175,7 +175,7 @@
 }
 
 #modalPrice {
-    font-size: 15px; /* Ajusta el tamaño de la fuente del precio */
+    font-size: 20px; /* Ajusta el tamaño de la fuente del precio */
     color: #187401; /* Color del precio */
     margin: 0; /* Elimina el margen del precio */
 }
@@ -655,7 +655,7 @@ section{
     font-family: 'Bungee Tint', sans-serif;
     font-weight: 1000;
     font-style: normal;
-    font-size: 2.5rem;
+    font-size: 3rem;
     margin-bottom: 0.5rem;
     text-align: justify; /* Justifica el texto */
 }
@@ -723,7 +723,7 @@ button:hover{
 }
 h2{
     padding: 2rem;
-    color: #b8101a;
+    color: #107db8;
 }
 
 .line{
@@ -812,7 +812,8 @@ h2{
 
 .card span{
     text-transform: uppercase;
-    font-weight: 300;
+    font-weight: 500;
+    font-size: 1.5rem;
     color: #000000;
 }
 

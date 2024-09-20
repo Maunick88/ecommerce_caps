@@ -70,7 +70,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ url('/mlb/mets') }}">
+                            <a href="{{ url('/mlb/yankees') }}">
                                 <span class="icon-text">
                                     <img src="{{ asset('img/yankees.png') }}" alt="Baseball" class="icon">
                                     Yankees
@@ -89,7 +89,7 @@
                     </a>
                     <ul class="dropdown-content">
                         <li>
-                            <a href="{{ url('/mlb/mets') }}">
+                            <a href="{{ url('/nfl/chiefs') }}">
                                 <span class="icon-text">
                                     <img src="{{ asset('img/kansas.png') }}" alt="Baseball" class="icon">
                                     Kansas City Chiefs
@@ -97,7 +97,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ url('/mlb/mets') }}">
+                            <a href="{{ url('/nfl/eagles') }}">
                                 <span class="icon-text">
                                     <img src="{{ asset('img/eagles.png') }}" alt="Baseball" class="icon">
                                     Philadelphia Eagles
@@ -105,7 +105,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ url('/mlb/mets') }}">
+                            <a href="{{ url('/nfl/patriots') }}">
                                 <span class="icon-text">
                                     <img src="{{ asset('img/patriots.png') }}" alt="Baseball" class="icon">
                                     New England Patriots
@@ -113,7 +113,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ url('/mlb/mets') }}">
+                            <a href="{{ url('/nfl/cowboys') }}">
                                 <span class="icon-text">
                                     <img src="{{ asset('img/cowboys.png') }}" alt="Baseball" class="icon">
                                     Dallas Cowboys
@@ -121,7 +121,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ url('/mlb/mets') }}">
+                            <a href="{{ url('/nfl/steelers') }}">
                                 <span class="icon-text">
                                     <img src="{{ asset('img/steelers.png') }}" alt="Baseball" class="icon">
                                     Pittsburgh Steelers
@@ -148,7 +148,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ url('/nba/mets') }}">
+                            <a href="{{ url('/nba/bulls') }}">
                                 <span class="icon-text">
                                     <img src="{{ asset('img/bulls.png') }}" alt="Baseball" class="icon">
                                     Chicago Bulls
@@ -156,7 +156,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ url('/nba/mets') }}">
+                            <a href="{{ url('/nba/timber') }}">
                                 <span class="icon-text">
                                     <img src="{{ asset('img/raptors.png') }}" alt="Baseball" class="icon">
                                     Timberwolves
@@ -164,7 +164,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ url('/nba/mets') }}">
+                            <a href="{{ url('/nba/grizzlies') }}">
                                 <span class="icon-text">
                                     <img src="{{ asset('img/grizzlies.png') }}" alt="Baseball" class="icon">
                                     Memphis Grizzlies

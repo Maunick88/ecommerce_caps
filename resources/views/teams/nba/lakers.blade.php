@@ -3,9 +3,9 @@
     <section>
         <div class="container">
             <div class="left-side">
-                <img src="{{ asset('img/ladodgers.png') }}" class="star" alt="">
+                <img src="{{ asset('img/lakers.png') }}" class="star" alt="">
                 <div class="title">
-                    <h1>LA</h1>
+                    <h1> Los Angeles Lakers</h1>
                     <h2>Selecciona tu estilo</h2>
                 </div>
             </div>
@@ -29,7 +29,7 @@
                     </div>
                     <div class="color">{{ $product->name }}</div>
                     <span>{{ $product->description }}</span>
-                    <span>Precio: {{ $product->price }} MXN</span>
+                    <span>$ {{ $product->price }} MXN</span>
                     <form id="add-to-cart-form" action="{{ route('cart.add') }}" method="POST" onsubmit="agregarProductoAlCarrito(event, {{ $product->id }}); return false;">
     @csrf
     <input type="hidden" name="product_id" value="{{ $product->id }}">

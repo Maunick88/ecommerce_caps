@@ -3,15 +3,17 @@
     <section>
         <div class="container">
             <div class="left-side">
-                <img src="{{ asset('img/ladodgers.png') }}" class="star" alt="">
+                <img src="{{ asset('img/raptors.png') }}" class="star" alt="">
                 <div class="title">
-                    <h1>Los Angeles Dodgers</h1>
+                    <h1> 
+                    Timberwolves
+                    </h1>
                     <h2>Selecciona tu estilo</h2>
                 </div>
             </div>
             <div class="right-side">
                 <p> 
-                Gorras de los Mets para fanáticos apasionados. Descubre nuestras gorras curvas y planas de los New York Mets y luce los colores de tu equipo con estilo.
+                Gorras de los Timberwolves para los auténticos fanáticos. Explora nuestras gorras curvas y planas de los Minnesota Timberwolves y muestra con orgullo los colores de tu equipo.
                 </p>
 
                 <div class="line"></div>
@@ -20,15 +22,15 @@
         <div class="card-container">
             @foreach ($products as $product)
             <div class="card card-{{ $loop->iteration }}" data-id="{{ $product->id }}" onclick="openModal({{ $product->id }})"
-                    data-image="{{ route('product.image', ['id' => $product->id]) }}"   
+                    data-image="{{ asset('img/' . $product->image) }}"
                     data-name="{{ $product->name }}"
                     data-description="{{ $product->description }}"
                     data-price="{{ $product->price }} MXN">
                     <div class="rotation">
-                    <img src="{{ route('product.image', ['id' => $product->id]) }}" alt="{{ $product->name }}" class="img-card image">
+                        <img src="{{ asset('img/' . $product->image) }}" alt="" class="img-card image">
                     </div>
                     <div class="color">{{ $product->name }}</div>
-                   <!-- <span>{{ $product->description }}</span> -->
+                    <span>{{ $product->description }}</span>
                     <span>$ {{ $product->price }} MXN</span>
                     <form id="add-to-cart-form" action="{{ route('cart.add') }}" method="POST" onsubmit="agregarProductoAlCarrito(event, {{ $product->id }}); return false;">
     @csrf
