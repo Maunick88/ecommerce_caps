@@ -79,7 +79,7 @@
             @foreach ($products as $product)
                 <div class="cart-item">
                     <div>
-                        <img src="{{ asset('img/' . $product->image) }}" alt="{{ $product->name }}">
+                    <img src="{{ route('product.image', ['id' => $product->id]) }}" alt="{{ $product->name }}" class="img-card image">
                         <strong>{{ $product->name }}</strong>
                         <span>{{ $cart[$product->id]['quantity'] }} x {{ number_format($product->price, 2) }} USD</span>
                     </div>

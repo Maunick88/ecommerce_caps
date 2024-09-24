@@ -16,8 +16,8 @@
             @foreach ($products as $product)
                 @php $subtotal = $product->price * $cart[$product->id]['quantity']; @endphp
                 <div class="cart-item">
-                    <img src="{{ asset('img/' . $product->image) }}" alt="{{ $product->name }}" class="img-card">
-                    <div class="item-details">
+                <img src="{{ route('product.image', ['id' => $product->id]) }}" alt="{{ $product->name }}" class="img-card image">
+                <div class="item-details">
                         <div><strong>{{ $product->name }}</strong></div>
                         <div>Precio: {{ number_format($product->price, 2) }} MXN</div>
                         <div>Cantidad: {{ $cart[$product->id]['quantity'] }}</div>
