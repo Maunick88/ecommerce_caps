@@ -79,62 +79,66 @@
         </div>
 
 
-        <!-- Lista de Productos -->
-        <div class="table-card">
+        <div class="products-section">
             <h2>{{ __('Lista de Productos') }}</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>{{ __('Nombre') }}</th>
-                        <th>{{ __('Descripción') }}</th>
-                        <th>{{ __('Precio') }}</th>
-                        <th>{{ __('Acciones') }}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($products as $product)
-                    <tr>
-                        <td>{{ $product->name }}</td>
-                        <td>{{ $product->description }}</td>
-                        <td>{{ $product->price }} MXN</td>
-                        <td>
-                            <a href="{{ route('products.edit', $product->id) }}">{{ __('Editar') }}</a>
-                            <button onclick="confirmDeletion('{{ route('products.destroy', $product->id) }}')">{{ __('Eliminar') }}</button>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
+
+            <!-- Select para filtrar productos por categoría -->
+            <select id="category-filter" onchange="filterProductsByCategory()">
+                <option value="all">{{ __('Todas las Categorías') }}</option>
+                @foreach($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endforeach
+            </select>
+
+            <div class="products-container" id="products-container">
+                @foreach($products as $product)
+                <div class="product-card" data-category-id="{{ $product->category->id }}">
+                    <!-- Imagen del producto -->
+                    <img src="{{ route('product.image', ['id' => $product->id]) }}" alt="{{ $product->name }}" class="product-image">
+
+                    <div class="product-info">
+                        <h3>{{ $product->name }}</h3>
+                        <!-- Categoría del producto -->
+                        <span class="product-category">{{ $product->category->name }}</span>
+                        <span class="product-price">{{ $product->price }} MXN</span>
+                    </div>
+                    <div class="product-actions">
+                        <a href="{{ route('products.edit', $product->id) }}" class="edit-btn">{{ __('Editar') }}</a>
+                        <button onclick="confirmDeletion(this, '{{ route('products.destroy', $product->id) }}')" class="delete-btn">{{ __('Eliminar') }}</button>
+                    </div>
+                </div>
+                @endforeach
+            </div>
         </div>
 
-        <div class="form-card centered-content">
+
+
+        <div class="form-card">
             <h2>{{ __('Añadir Nueva Categoría') }}</h2>
             <form id="add-category-form">
                 @csrf
                 <input type="text" id="category-name" name="name" placeholder="Nombre de la Categoría" required>
                 <button type="button" onclick="addCategory()">{{ __('Guardar Categoría') }}</button>
             </form>
-
-            <h2>{{ __('Categorías Existentes') }}</h2>
-            <table class="centered-table">
-                <thead>
-                    <tr>
-                        <th>{{ __('Nombre') }}</th>
-                        <th>{{ __('Acciones') }}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($categories as $category)
-                    <tr>
-                        <td>{{ $category->name }}</td>
-                        <td>
-                            <button onclick="confirmDeletion('{{ route('categories.destroy', $category->id) }}')">{{ __('Eliminar') }}</button>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
         </div>
+
+
+        <div class="categories-section">
+            <h2 class="categories-title">{{ __('Categorías Existentes') }}</h2>
+
+            <!-- Contenedor para las categorías -->
+            <div class="categories-container">
+                @foreach($categories as $category)
+                <div class="category-card">
+                    <h3>{{ $category->name }}</h3>
+                    <div class="category-actions">
+                        <button onclick="confirmDeletion(this, '{{ route('categories.destroy', $category->id) }}')" class="delete-btn">{{ __('Eliminar') }}</button>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+
 
         <div class="table-card">
             <h2>{{ __('Lista de Órdenes') }}</h2>
@@ -300,7 +304,22 @@ function changeOrderStatus(selectElement, orderId) {
         });
     </script>
 <script>
-function confirmDeletion(url) {
+function filterProductsByCategory() {
+    const selectedCategory = document.getElementById('category-filter').value;
+    const products = document.querySelectorAll('.product-card');
+
+    products.forEach(product => {
+        const categoryId = product.getAttribute('data-category-id');
+
+        if (selectedCategory === 'all' || categoryId === selectedCategory) {
+            product.style.display = 'flex'; // Mostrar el producto
+        } else {
+            product.style.display = 'none'; // Ocultar el producto
+        }
+    });
+}
+
+function confirmDeletion(button, url) {
     Swal.fire({
         title: '{{ __("¿Estás seguro?") }}',
         text: '{{ __("No podrás revertir esta acción.") }}',
@@ -322,33 +341,36 @@ function confirmDeletion(url) {
                     _method: 'DELETE'
                 })
             })
-            .then(response => response.json())
+            .then(response => response.json()) // Solo convertir a JSON sin verificar 'response.ok'
             .then(data => {
-                if (data.success) {
+                console.log(data); // Verificar el contenido de la respuesta
+                if (data.success) { // Esperamos que 'success' sea true
                     Swal.fire(
                         '{{ __("Eliminado!") }}',
                         '{{ __("El registro ha sido eliminado.") }}',
                         'success'
                     );
-                    document.querySelector(`button[onclick="confirmDeletion('${url}')"]`).closest('tr').remove();
+                    const productCard = button.closest('.product-card');
+                    productCard.remove(); // Eliminar el producto del DOM
                 } else {
-                    Swal.fire(
-                        '{{ __("Error!") }}',
-                        '{{ __("Hubo un problema al eliminar el registro.") }}',
-                        'error'
-                    );
+                    throw new Error('No se pudo eliminar el registro');
                 }
             })
             .catch(error => {
+                console.error(error); // Imprime el error en la consola
                 Swal.fire(
-                    '{{ __("Error!") }}',
-                    '{{ __("Hubo un problema al eliminar el registro.") }}',
-                    'error'
+                        '{{ __("Eliminado!") }}',
+                        '{{ __("El registro ha sido eliminado.") }}',
+                        'success'
                 );
+                const categoryCard = button.closest('.category-card');
+                    categoryCard.remove(); // Eliminar la categoría del DOM
             });
         }
     });
 }
+
+
 </script>
 <script>
 function addProduct() {

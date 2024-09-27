@@ -799,7 +799,7 @@ h2{
 
 .card:hover {
     background: linear-gradient(to left, #3a7bd58e, #00d0ff8c);
-    transform: scale(10) rotate(2deg); /* Aumenta el tamaño y añade una ligera rotación */
+    transform: scale(1) rotate(2deg); /* Aumenta el tamaño y añade una ligera rotación */
     box-shadow: 0 50px 50px rgba(0, 0, 0, 0.2); /* Agrega una sombra suave */
 }
 

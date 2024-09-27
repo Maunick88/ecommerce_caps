@@ -28,7 +28,7 @@
                     <img src="{{ route('product.image', ['id' => $product->id]) }}" alt="{{ $product->name }}" class="img-card image">
                     </div>
                     <div class="color">{{ $product->name }}</div>
-                    <!-- <span>{{ $product->description }}</span> -->
+                   <!-- <span>{{ $product->description }}</span> -->
                     <span>$ {{ $product->price }} MXN</span>
                     <form id="add-to-cart-form" action="{{ route('cart.add') }}" method="POST" onsubmit="agregarProductoAlCarrito(event, {{ $product->id }}); return false;">
     @csrf
