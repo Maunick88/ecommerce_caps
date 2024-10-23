@@ -1071,17 +1071,7 @@ input[type="range"] {
 /*end modal products*/
 
 
-.card-1{
-    background: linear-gradient(to right,
-    #3f4c6b80 , #535e7981
-    );
-}
-.card-2{
-    background: linear-gradient(to right,
-    #3f4c6b80 , #535e7981
-    );
-}
-.card-3{
+.card{
     background: linear-gradient(to right,
     #3f4c6b80 , #535e7981
     );
@@ -1095,14 +1085,18 @@ input[type="range"] {
 
 
 .color{
-    font-size: 24px;
+    font-size: 25px;
     font-weight: 700;
     margin-bottom: .5rem;
 }
 
+.card.card{
+    padding: 50px;
+}
+
 .card span{
     text-transform: uppercase;
-    font-weight: 200;
+    font-weight: 400;
     color: #000000;
 }
 

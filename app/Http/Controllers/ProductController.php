@@ -61,6 +61,12 @@ class ProductController extends Controller
 
     public function addToCart(Request $request)
     {
+        // Verifica si el usuario ha iniciado sesión
+        if (!auth()->check()) {
+            return response()->json(['message' => 'Debe iniciar sesión para agregar productos al carrito.'], 401);
+        }
+    
+        // Obtiene el carrito de la sesión o inicializa uno vacío
         $cart = session()->get('cart', []);
         $productId = $request->input('product_id');
         $quantity = $request->input('quantity', 1); // Obtén la cantidad, por defecto 1
@@ -72,10 +78,12 @@ class ProductController extends Controller
             $cart[$productId]['quantity'] += $quantity; // Actualiza la cantidad sumándola
         }
     
+        // Guarda el carrito en la sesión
         session()->put('cart', $cart);
     
         return response()->json(['message' => 'Producto agregado al carrito!', 'cart' => $cart]);
     }
+    
     
     
     // Método para eliminar un producto del carrito

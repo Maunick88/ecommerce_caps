@@ -164,28 +164,29 @@
     <div class="swiper-container">
         <!-- Aquí va tu carrusel con productos -->
         <div class="swiper-wrapper">
-            @foreach ($products as $product)
-            <div class="swiper-slide card-container">
-                <!-- Contenido de cada tarjeta -->
-                <div class="card card-{{ $loop->iteration }}" onclick="openModal({{ $product->id }})"
-                    data-image="{{ route('product.image', ['id' => $product->id]) }}"   
-                    data-name="{{ $product->name }}"
-                    data-description="{{ $product->description }}"
-                    data-price="{{ $product->price }} MXN">
-                    <div class="rotation">
-                            <img src="{{ route('product.image', ['id' => $product->id]) }}" alt="{{ $product->name }}" class="img-card image">
-                    </div>
-                    <div class="color">{{ $product->name }}</div>
-                    <span>$ {{ $product->price }} MXN</span>
-                    <form id="add-to-cart-form" action="{{ route('cart.add') }}" method="POST" onsubmit="agregarProductoAlCarrito(event, {{ $product->id }}); return false;">
-                        @csrf
-                        <input type="hidden" name="product_id" value="{{ $product->id }}">
-                        <button type="submit" class="btn btn-primary"
-                            onclick="event.stopPropagation();">Agregar al carrito</button>
-                    </form>
-                </div>
+        @foreach ($products as $product)
+    <div class="swiper-slide card-container">
+        <div class="card card-{{ $loop->iteration }}" 
+             data-id="{{ $product->id }}"
+             data-image="{{ route('product.image', ['id' => $product->id]) }}"   
+             data-name="{{ $product->name }}"
+             data-description="{{ $product->description }}"
+             data-price="{{ $product->price }} MXN"
+             onclick="openModal({{ $product->id }})">
+            <div class="rotation">
+                <img src="{{ route('product.image', ['id' => $product->id]) }}" alt="{{ $product->name }}" class="img-card image">
             </div>
-            @endforeach
+            <div class="color">{{ $product->name }}</div>
+            <span>$ {{ $product->price }} MXN</span>
+            <form id="add-to-cart-form" action="{{ route('cart.add') }}" method="POST" onsubmit="agregarProductoAlCarrito(event, {{ $product->id }}); return false;">
+                @csrf
+                <input type="hidden" name="product_id" value="{{ $product->id }}">
+                <button type="submit" class="btn btn-primary" onclick="event.stopPropagation();">Agregar al carrito</button>
+            </form>
+        </div>
+    </div>
+@endforeach
+
         </div>
 
         <!-- Modal de información del producto -->
@@ -264,9 +265,11 @@
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
 
-        <!-- Paginación -->
+        <!-- Paginación
         <div class="swiper-pagination"></div>
-    </div>
+    </div> -->
+
+    </body>
 
         <!-- Inicializa Swiper -->
         <script>
@@ -396,210 +399,17 @@ function initMap() {
 }
 
 </script>
-    </section>
-
-    <!-- <section>
-        <div class="container">
-            <div class="left-side hand">
-                <img class="gold image" src="{{ asset('img/side-img.jpg') }}" alt="">
-            </div>
-            <div class="right-side">
-                <img src="./img/star.png" class="star star-s2" alt="">
-                <div class="title">
-                    <h1>Investing for <br> the long term</h1>
-                    <h2>Reasons for investing</h2>
-                </div>
-
-                <p class="p">
-                    People often choose gold bullion as an long term investment.
-                    Silver generally follows gold in terms of relative values, and in the past decade, 
-                   gold hasdemonstrated a steady overall annual profit.
-                </p>
-
-                <div class="line"></div>
-
-                <p class="p">
-                    They can be traded in the short and medium term, gold & 
-                    silver prices move in the markets.
-                </p>
-                <button>see directions</button>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <div class="container">
-            <div class="left-side">
-                <div class="title">
-                    <h1>Timing og gold & <br> silver prices</h1>
-                    <h2>An unstoppable duo</h2>
-                </div>
-                <div class="type g-type">
-                    <p>Gold</p>
-                    <p>Gold is seen as a hedge against inflation and a store of value through 
-                    thick and through thin.</p>
-                </div>
-
-                <div class="line line-blue"></div>
-
-                <div class="type s-type">
-                    <p>Silver</p>
-                    <p>
-                        Silver prices are much more `volatile` than those of gold 
-                      in the short term.
-                    </p>
-                </div>
-                <div class="line"></div>
-            </div>
-            <div class="right-side rotation">
-                <img class="gold3 image" src="./img/gold3.png" alt="">
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <div class="container">
-            <div class="left-side">
-                <img src="./img/star.png" class="star-s4 star" alt="">
-                <div class="title">
-                    <h1>3 direction</h1>
-                    <h2>Choose your gold</h2>
-                </div>
-            </div>
-            <div class="right-side">
-                <p>
-                    The fineness of gold depends on the amount of ligature - additional metals. 
-                    For example, yellow gold 585* is a metal with the addition 
-                    of 28% silver and 113.5% copper.
-                </p>
-
-                <div class="line"></div>
-            </div>
-        </div>
-        <div class="card-container">
-            <div class="card card-1">
-                <div class="rotation">
-                    <img src="./img/card-1.png" alt="" class="img-card image">
-                </div>
-                <div class="color">yellow</div>
-                <span>585 standard gold</span>
-            </div>
-            <div class="card card-2">
-                <div class="rotation">
-                    <img src="./img/card-2.png" alt="" class="img-card image">
-                </div>
-                <div class="color">white</div>
-                <span>585 standard gold</span>
-            </div>
-            <div class="card card-3">
-                <div class="rotation">
-                    <img src="./img/card-3.png" alt="" class="img-card image">
-                </div>
-                <div class="color">pink</div>
-                <span>750 standard gold</span>
-            </div>
-        </div>
-    </section> -->
-
-    @include('footer')   
-
-</body>
-<script>
-    const slides = document.querySelectorAll('.slide');
-    let currentSlide = 0;
-    let slideInterval;
-
-    function showNextSlide() {
-        const oldSlide = slides[currentSlide];
-        oldSlide.classList.remove('active');
-        oldSlide.classList.add('old');
-
-        currentSlide = (currentSlide + 1) % slides.length;
-        const newSlide = slides[currentSlide];
-        newSlide.classList.add('active');
-
-        setTimeout(() => {
-            oldSlide.classList.remove('old');
-        }, 1000); // Tiempo de transición que coincide con el CSS
-    }
-
-    function changeSlide(n) {
-        clearInterval(slideInterval); // Detiene el auto-reproducción al cambiar manualmente
-        const oldSlide = slides[currentSlide];
-        oldSlide.classList.remove('active');
-        oldSlide.classList.add('old');
-
-        currentSlide = (currentSlide + n + slides.length) % slides.length; // Cambia de slide
-        const newSlide = slides[currentSlide];
-        newSlide.classList.add('active');
-
-        setTimeout(() => {
-            oldSlide.classList.remove('old');
-        }, 1000);
-
-        slideInterval = setInterval(showNextSlide, 5000); // Reinicia el auto-reproducción
-    }
-
-    // Inicia la auto-reproducción de las diapositivas
-    slideInterval = setInterval(showNextSlide, 5000); // Cambia la imagen cada 5 segundos
-</script>
-
-<!-- Incluye SweetAlert desde CDN -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js" ></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js" ></script>
-<script src="{{ asset('js/script.js') }}"></script>
-<script>
-    const addProductUrl = "{{ route('cart.add') }}"; // Genera la URL correcta usando Blade
-</script>
-<script src="{{ asset('js/cart.js') }}"></script>
-<script>
-    let lastX = null, lastY = null;
-
-    document.addEventListener('mousemove', (e) => {
-        if (lastX !== null && lastY !== null) {
-            createNeonLine(lastX, lastY, e.pageX, e.pageY);
-        }
-        lastX = e.pageX;
-        lastY = e.pageY;
-    });
-
-    function createNeonLine(x1, y1, x2, y2) {
-        const line = document.createElement('div');
-        line.classList.add('line');
-        document.body.appendChild(line);
-
-        // Calcular la longitud de la línea
-        const length = Math.hypot(x2 - x1, y2 - y1);
-
-        // Posicionar la línea en el primer punto
-        line.style.left = `${x1}px`;
-        line.style.top = `${y1}px`;
-
-        // Rotar la línea hacia el segundo punto
-        const angle = Math.atan2(y2 - y1, x2 - x1) * (180 / Math.PI);
-        line.style.transform = `rotate(${angle}deg)`;
-
-        // Ajustar la longitud de la línea
-        line.style.width = `${length}px`;
-
-        // Desaparecer la línea después de un tiempo
-        setTimeout(() => {
-            line.style.opacity = '0';
-        }, 100);
-
-        // Eliminar la línea del DOM
-        setTimeout(() => {
-            line.remove();
-        }, 600);  // Debe coincidir con la duración de la transición
-    }
-</script>
 <script>
 function openModal(productId) {
-    // Obtén el elemento de la tarjeta clicada
-    const productCard = document.querySelector(`.card.card-${productId}`);
+    // Selecciona la tarjeta correspondiente utilizando el selector de data-id
+    const productCard = document.querySelector(`.card-container .card[data-id="${productId}"]`);
 
-    // Obtén los atributos 'data' de la tarjeta
+    if (!productCard) {
+        console.error('No se pudo encontrar la tarjeta del producto con ID: ', productId);
+        return;
+    }
+
+    // Obtén los atributos 'data' de la tarjeta seleccionada
     const image = productCard.getAttribute('data-image');
     const name = productCard.getAttribute('data-name');
     const description = productCard.getAttribute('data-description');
@@ -610,11 +420,7 @@ function openModal(productId) {
     document.getElementById('modalName').textContent = name;
     document.getElementById('modalDescription').textContent = description;
     document.getElementById('modalPrice').textContent = 'Precio: ' + price;
-    document.getElementById('modalProductId').value = productId; // Asegura que el ID del producto se establezca correctamente
-
-    // Restablece la cantidad a 1 al abrir el modal
-    document.getElementById('quantity').value = 1;
-    updateQuantityValue(1);
+    document.getElementById('modalProductId').value = productId;
 
     // Muestra el modal
     document.getElementById('productModal').style.display = 'flex';
@@ -628,10 +434,11 @@ function openModal(productId) {
             return response.json();
         })
         .then(reviews => {
-            mostrarResenas(reviews); // Llama a la función para mostrar las reseñas en el modal
+            mostrarResenas(reviews);
         })
         .catch(error => console.error('Error al obtener reseñas:', error));
 }
+
 
 function mostrarResenas(reviews) {
     const modalReviews = document.getElementById('modalReviews');
@@ -750,6 +557,99 @@ function submitReview(event) {
     });
 }
 </script>
+@include('footer')   
+
+<script>
+    const slides = document.querySelectorAll('.slide');
+    let currentSlide = 0;
+    let slideInterval;
+
+    function showNextSlide() {
+        const oldSlide = slides[currentSlide];
+        oldSlide.classList.remove('active');
+        oldSlide.classList.add('old');
+
+        currentSlide = (currentSlide + 1) % slides.length;
+        const newSlide = slides[currentSlide];
+        newSlide.classList.add('active');
+
+        setTimeout(() => {
+            oldSlide.classList.remove('old');
+        }, 1000); // Tiempo de transición que coincide con el CSS
+    }
+
+    function changeSlide(n) {
+        clearInterval(slideInterval); // Detiene el auto-reproducción al cambiar manualmente
+        const oldSlide = slides[currentSlide];
+        oldSlide.classList.remove('active');
+        oldSlide.classList.add('old');
+
+        currentSlide = (currentSlide + n + slides.length) % slides.length; // Cambia de slide
+        const newSlide = slides[currentSlide];
+        newSlide.classList.add('active');
+
+        setTimeout(() => {
+            oldSlide.classList.remove('old');
+        }, 1000);
+
+        slideInterval = setInterval(showNextSlide, 5000); // Reinicia el auto-reproducción
+    }
+
+    // Inicia la auto-reproducción de las diapositivas
+    slideInterval = setInterval(showNextSlide, 5000); // Cambia la imagen cada 5 segundos
+</script>
+
+<!-- Incluye SweetAlert desde CDN -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js" ></script>
+<script src="{{ asset('js/script.js') }}"></script>
+<script>
+    const addProductUrl = "{{ route('cart.add') }}"; // Genera la URL correcta usando Blade
+</script>
+<script src="{{ asset('js/cart.js') }}"></script>
+<script>
+    let lastX = null, lastY = null;
+
+    document.addEventListener('mousemove', (e) => {
+        if (lastX !== null && lastY !== null) {
+            createNeonLine(lastX, lastY, e.pageX, e.pageY);
+        }
+        lastX = e.pageX;
+        lastY = e.pageY;
+    });
+
+    function createNeonLine(x1, y1, x2, y2) {
+        const line = document.createElement('div');
+        line.classList.add('line');
+        document.body.appendChild(line);
+
+        // Calcular la longitud de la línea
+        const length = Math.hypot(x2 - x1, y2 - y1);
+
+        // Posicionar la línea en el primer punto
+        line.style.left = `${x1}px`;
+        line.style.top = `${y1}px`;
+
+        // Rotar la línea hacia el segundo punto
+        const angle = Math.atan2(y2 - y1, x2 - x1) * (180 / Math.PI);
+        line.style.transform = `rotate(${angle}deg)`;
+
+        // Ajustar la longitud de la línea
+        line.style.width = `${length}px`;
+
+        // Desaparecer la línea después de un tiempo
+        setTimeout(() => {
+            line.style.opacity = '0';
+        }, 100);
+
+        // Eliminar la línea del DOM
+        setTimeout(() => {
+            line.remove();
+        }, 600);  // Debe coincidir con la duración de la transición
+    }
+</script>
+
 
 
 

@@ -172,7 +172,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ url('/nba/mets') }}">
+                            <a href="{{ url('/nba/hornets') }}">
                                 <span class="icon-text">
                                     <img src="{{ asset('img/hornets.png') }}" alt="Baseball" class="icon">
                                     Charlotte Hornets
@@ -191,7 +191,7 @@
                     </a>
                     <ul class="dropdown-content">
                         <li>
-                            <a href="{{ url('/mlb/mets') }}">
+                            <a href="{{ url('/lmb/diablos') }}">
                                 <span class="icon-text">
                                     <img src="{{ asset('img/diablos.png') }}" alt="Baseball" class="icon">
                                     Diablos Rojos del México
@@ -199,7 +199,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ url('/mlb/mets') }}">
+                            <a href="{{ url('/lmb/pericos') }}">
                                 <span class="icon-text">
                                     <img src="{{ asset('img/pericos.png') }}" alt="Baseball" class="icon">
                                     Pericos de Puebla
@@ -207,7 +207,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ url('/mlb/mets') }}">
+                            <a href="{{ url('/lmb/tigres') }}">
                                 <span class="icon-text">
                                     <img src="{{ asset('img/tigresqr.png') }}" alt="Baseball" class="icon">
                                     Tigres de Quintana Roo
@@ -215,7 +215,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ url('/mlb/mets') }}">
+                            <a href="{{ url('/lmb/piratas') }}">
                                 <span class="icon-text">
                                     <img src="{{ asset('img/piratas.png') }}" alt="Baseball" class="icon">
                                     Piratas de Campeche

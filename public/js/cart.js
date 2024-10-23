@@ -39,10 +39,10 @@ function agregarProductoAlCarrito(event, productId = null) {
     .catch(error => {
         console.error('Error:', error);
         Swal.fire({
-            title: 'Error',
-            text: 'Hubo un problema al agregar el producto al carrito.',
-            icon: 'error',
-            confirmButtonText: 'Intentar de nuevo'
+            title: 'No has iniciado sesión',
+            text: 'Debes iniciar sesión para agregar productos al carrito.',
+            icon: 'warning',
+            confirmButtonText: 'Aceptar'
         });
     });
 }
