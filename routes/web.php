@@ -23,7 +23,7 @@ Route::get('/', function () {
 });
 
 Route::get('/americano/{ids?}', 'App\Http\Controllers\ProductController@GetNflTeams');
-Route::get('/basket/{ids?}', 'App\Http\Controllers\ProductController@GetNflTeams');
+Route::get('/basket/{ids?}', 'App\Http\Controllers\ProductController@GetNbaTeams');
 
 
 //resumen de pedido

@@ -24,7 +24,7 @@
                     <p>Una nueva temporada esta por dar inicio y en MauCaps estamos preparados para el momento del kick off</p>
                 </div>
                 </div>
-                <a href="{{ url('/nfl/13,14,15,16,17') }}" class="button-link3">
+                <a href="{{ url('/americano/13,14,15,16,17') }}" class="button-link3">
                     <button>Comienza a comprar</button>
                 </a>
                 
@@ -48,7 +48,7 @@
                     <p>¡El arranque de la temporada está aquí!. Esta colección marca el inicio de un nuevo capítulo en la duela, capturando la emoción del primer silbatazo. </p>
                 </div>
                 </div>
-                <a href="{{ url('/mlb/dodgers') }}" class="button-link2">
+                <a href="{{ url('/basket/11,18,19,22,23')  }}" class="button-link2">
                     <button>Comienza a comprar</button>
                 </a>
             </div>

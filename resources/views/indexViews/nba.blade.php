@@ -1,4 +1,4 @@
-@include('headerNfl')   
+@include('headerNba')   
 <body>
 
 {{-- Banner Deportivo --}}
@@ -68,7 +68,6 @@
 <!-- Incluye SweetAlert desde CDN -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js" ></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js" ></script>
 <script src="{{ asset('js/script.js') }}"></script>
 <script>
     const addProductUrl = "{{ route('cart.add') }}"; // Genera la URL correcta usando Blade

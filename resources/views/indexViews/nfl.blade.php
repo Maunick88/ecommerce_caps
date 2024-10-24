@@ -7,7 +7,7 @@
         <div class="slide active">
             <!-- <img src="{{ asset('img/banner_nfl.webp') }}" alt="Estadio NFL 1"> -->
             <div class="text-overlay">
-                <h1>Bienvenido a la NFL</h1>
+                <h1>Bienvenido a la NBA</h1>
                 <p>Descubre nuestros productos exclusivos y siente la emoción del juego.</p>
             </div>
         </div>
@@ -68,7 +68,6 @@
 <!-- Incluye SweetAlert desde CDN -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js" ></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js" ></script>
 <script src="{{ asset('js/script.js') }}"></script>
 <script>
     const addProductUrl = "{{ route('cart.add') }}"; // Genera la URL correcta usando Blade
