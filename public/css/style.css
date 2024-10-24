@@ -168,14 +168,14 @@
 }
 
 #modalName {
-    font-size: 30px; /* Ajusta el tamaño de la fuente del nombre */
+    font-size: 35px; /* Ajusta el tamaño de la fuente del nombre */
     font-weight: bold;
     color: #d32f2f; /* Cambia el color del nombre si es necesario */
     margin: 0; /* Elimina el margen del título */
 }
 
 #modalPrice {
-    font-size: 20px; /* Ajusta el tamaño de la fuente del precio */
+    font-size: 40px; /* Ajusta el tamaño de la fuente del precio */
     color: #187401; /* Color del precio */
     margin: 0; /* Elimina el margen del precio */
 }

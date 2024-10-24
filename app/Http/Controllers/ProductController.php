@@ -151,13 +151,24 @@ class ProductController extends Controller
 
     public function updateCart(Request $request)
     {
+        // Define el límite máximo de unidades por producto
+        $stockLimit = 30;
+    
+        // Valida los datos de entrada
+        $request->validate([
+            'product_id' => 'required|integer|exists:products,id',
+            'quantity' => 'required|integer|min:1'
+        ]);
+    
         $cart = session()->get('cart', []);
         $productId = $request->input('product_id');
         $quantity = $request->input('quantity');
     
-        // Verifica que la cantidad sea un número válido y mayor a 0
-        if ($quantity <= 0) {
-            return response()->json(['message' => 'La cantidad debe ser mayor que 0.'], 400);
+        // Verifica que la cantidad no exceda el límite de stock
+        if ($quantity > $stockLimit) {
+            return response()->json([
+                'message' => 'No hay suficiente stock disponible. El límite es de ' . $stockLimit . ' unidades.'
+            ], 400);
         }
     
         // Actualiza la cantidad del producto en el carrito
@@ -165,12 +176,12 @@ class ProductController extends Controller
             $cart[$productId]['quantity'] = $quantity;
             session()->put('cart', $cart);
     
-            return response()->json(['message' => 'Cantidad actualizada correctamente.']);
+            return response()->json(['message' => 'Cantidad actualizada correctamente.', 'cart' => $cart]);
         }
     
         return response()->json(['message' => 'Producto no encontrado en el carrito.'], 404);
     }
-
+    
     public function storeReview(Request $request)
     {
       // Validar la entrada
