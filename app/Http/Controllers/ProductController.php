@@ -45,8 +45,34 @@ class ProductController extends Controller
         // Retornar la vista con los productos
         return view($viewPath, compact('products'));
     }
-    
-     
+    /**
+     * Mostrar productos filtrados por múltiples IDs de categoría.
+     *
+     * @param string $ids Cadena de IDs de categoría separados por comas (e.g., "5,6,7,8")
+     * @return \Illuminate\View\View|\Illuminate\Http\RedirectResponse
+     */
+    public function GetNflTeams($ids)
+    {
+        // Separar los IDs por comas y convertirlos a un array de enteros
+        $categoryIds = array_map('intval', explode(',', $ids));
+
+        // Validar que cada ID corresponda a una categoría existente
+        $validCategories = Category::whereIn('id', $categoryIds)->pluck('id')->toArray();
+
+        // Verificar si todos los IDs proporcionados existen
+        if (count($validCategories) !== count($categoryIds)) {
+            // Identificar los IDs no válidos
+            $invalidIds = array_diff($categoryIds, $validCategories);
+            return redirect()->back()->with('error', 'IDs de categoría inválidos o no existentes: ' . implode(', ', $invalidIds));
+        }
+
+        // Obtener los productos que pertenecen a las categorías especificadas
+        $products = Product::whereIn('category_id', $categoryIds)->with('category')->get();
+
+        // Retornar la vista con los productos filtrados
+        // Puedes usar la misma vista 'welcome' o crear una específica
+        return view('indexViews.nfl', compact('products'));
+    }
 
     public function viewCart()
     {

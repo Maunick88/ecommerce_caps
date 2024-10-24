@@ -42,10 +42,10 @@
                 </a>
             </div>
             <div class="slide">
-                <img src="{{ asset('img/checo.webp') }}" alt="Imagen 3">                
+                <img src="{{ asset('img/bannerbasket.webp') }}" alt="Imagen 3">                
                 <div class="text-overlay2">
                 <div class="title">
-                    <p>Gorras curvas New Era del piloto mexicano Sergio Perez con la escudería Oracle Red Bull Racing.</p>
+                    <p>¡El arranque de la temporada está aquí!. Esta colección marca el inicio de un nuevo capítulo en la duela, capturando la emoción del primer silbatazo. </p>
                 </div>
                 </div>
                 <a href="{{ url('/mlb/dodgers') }}" class="button-link2">
