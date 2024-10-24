@@ -14,7 +14,7 @@
 
 </head>
 
-    <header>
+<header>
         <div class="barra">
             <div class="text-wrapper">
                 <span id="cambio-texto">DISFRUTA <strong>ENVÍO GRATIS</strong> A PARTIR DE <strong>$649</strong> </span>
@@ -81,7 +81,7 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="{{ url('/mlb/mets') }}">
+                    <a href="{{ url('/americano/13,14,15,16,17') }}">
                     <span class="icon-text">
                         <img src="{{ asset('img/nfl.png') }}" alt="Basketball" class="icon">
                         NFL
@@ -132,8 +132,8 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="{{ url('/nba/nba') }}">
-                    <span class="icon-text">
+                <a href="{{ url('/basket/11,18,19,22,23') }}">
+                <span class="icon-text">
                         <img src="{{ asset('img/nba.png') }}" alt="Fútbol" class="icon">
                         NBA
                     </span>

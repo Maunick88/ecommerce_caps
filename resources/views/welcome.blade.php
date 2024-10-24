@@ -24,7 +24,7 @@
                     <p>Una nueva temporada esta por dar inicio y en MauCaps estamos preparados para el momento del kick off</p>
                 </div>
                 </div>
-                <a href="{{ url('/mlb/dodgers') }}" class="button-link3">
+                <a href="{{ url('/nfl/13,14,15,16,17') }}" class="button-link3">
                     <button>Comienza a comprar</button>
                 </a>
                 

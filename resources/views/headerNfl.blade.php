@@ -8,11 +8,12 @@
     <link rel="icon" href="{{ asset('img/logo.png') }}" type="image/png">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ asset('css/style_nfl.css') }}">
 </head>
 
-    <header>
+<header>
         <div class="barra">
             <div class="text-wrapper">
                 <span id="cambio-texto">DISFRUTA <strong>ENVÍO GRATIS</strong> A PARTIR DE <strong>$649</strong> </span>
@@ -68,7 +69,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ url('/mlb/mets') }}">
+                            <a href="{{ url('/mlb/yankees') }}">
                                 <span class="icon-text">
                                     <img src="{{ asset('img/yankees.png') }}" alt="Baseball" class="icon">
                                     Yankees
@@ -79,7 +80,7 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="{{ url('/mlb/mets') }}">
+                    <a href="{{ url('/americano/13,14,15,16,17') }}">
                     <span class="icon-text">
                         <img src="{{ asset('img/nfl.png') }}" alt="Basketball" class="icon">
                         NFL
@@ -87,7 +88,7 @@
                     </a>
                     <ul class="dropdown-content">
                         <li>
-                            <a href="{{ url('/mlb/mets') }}">
+                            <a href="{{ url('/nfl/chiefs') }}">
                                 <span class="icon-text">
                                     <img src="{{ asset('img/kansas.png') }}" alt="Baseball" class="icon">
                                     Kansas City Chiefs
@@ -95,7 +96,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ url('/mlb/mets') }}">
+                            <a href="{{ url('/nfl/eagles') }}">
                                 <span class="icon-text">
                                     <img src="{{ asset('img/eagles.png') }}" alt="Baseball" class="icon">
                                     Philadelphia Eagles
@@ -103,7 +104,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ url('/mlb/mets') }}">
+                            <a href="{{ url('/nfl/patriots') }}">
                                 <span class="icon-text">
                                     <img src="{{ asset('img/patriots.png') }}" alt="Baseball" class="icon">
                                     New England Patriots
@@ -111,7 +112,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ url('/mlb/mets') }}">
+                            <a href="{{ url('/nfl/cowboys') }}">
                                 <span class="icon-text">
                                     <img src="{{ asset('img/cowboys.png') }}" alt="Baseball" class="icon">
                                     Dallas Cowboys
@@ -119,7 +120,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ url('/mlb/mets') }}">
+                            <a href="{{ url('/nfl/steelers') }}">
                                 <span class="icon-text">
                                     <img src="{{ asset('img/steelers.png') }}" alt="Baseball" class="icon">
                                     Pittsburgh Steelers
@@ -130,15 +131,15 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="{{ url('/mlb/mets') }}">
-                    <span class="icon-text">
+                <a href="{{ url('/basket/11,18,19,22,23') }}">
+                <span class="icon-text">
                         <img src="{{ asset('img/nba.png') }}" alt="Fútbol" class="icon">
                         NBA
                     </span>
                     </a>
                     <ul class="dropdown-content">
                         <li>
-                            <a href="{{ url('/mlb/mets') }}">
+                            <a href="{{ url('/nba/lakers') }}">
                                 <span class="icon-text">
                                     <img src="{{ asset('img/lakers.png') }}" alt="Baseball" class="icon">
                                     Los Angeles Lakers
@@ -146,7 +147,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ url('/mlb/mets') }}">
+                            <a href="{{ url('/nba/bulls') }}">
                                 <span class="icon-text">
                                     <img src="{{ asset('img/bulls.png') }}" alt="Baseball" class="icon">
                                     Chicago Bulls
@@ -154,7 +155,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ url('/mlb/mets') }}">
+                            <a href="{{ url('/nba/timber') }}">
                                 <span class="icon-text">
                                     <img src="{{ asset('img/raptors.png') }}" alt="Baseball" class="icon">
                                     Timberwolves
@@ -162,7 +163,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ url('/mlb/mets') }}">
+                            <a href="{{ url('/nba/grizzlies') }}">
                                 <span class="icon-text">
                                     <img src="{{ asset('img/grizzlies.png') }}" alt="Baseball" class="icon">
                                     Memphis Grizzlies
@@ -170,7 +171,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ url('/mlb/mets') }}">
+                            <a href="{{ url('/nba/hornets') }}">
                                 <span class="icon-text">
                                     <img src="{{ asset('img/hornets.png') }}" alt="Baseball" class="icon">
                                     Charlotte Hornets
@@ -189,7 +190,7 @@
                     </a>
                     <ul class="dropdown-content">
                         <li>
-                            <a href="{{ url('/mlb/mets') }}">
+                            <a href="{{ url('/lmb/diablos') }}">
                                 <span class="icon-text">
                                     <img src="{{ asset('img/diablos.png') }}" alt="Baseball" class="icon">
                                     Diablos Rojos del México
@@ -197,7 +198,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ url('/mlb/mets') }}">
+                            <a href="{{ url('/lmb/pericos') }}">
                                 <span class="icon-text">
                                     <img src="{{ asset('img/pericos.png') }}" alt="Baseball" class="icon">
                                     Pericos de Puebla
@@ -205,7 +206,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ url('/mlb/mets') }}">
+                            <a href="{{ url('/lmb/tigres') }}">
                                 <span class="icon-text">
                                     <img src="{{ asset('img/tigresqr.png') }}" alt="Baseball" class="icon">
                                     Tigres de Quintana Roo
@@ -213,7 +214,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ url('/mlb/mets') }}">
+                            <a href="{{ url('/lmb/piratas') }}">
                                 <span class="icon-text">
                                     <img src="{{ asset('img/piratas.png') }}" alt="Baseball" class="icon">
                                     Piratas de Campeche
@@ -351,7 +352,7 @@
                                     <x-slot name="content">
                                     <x-dropdown-link :href="route('profile.edit')">
                                     <i class="fas fa-user-shield"></i> <!-- Ícono de usuario con escudo -->
-                                    </x-dropdown-link>
+                                    </x-dropdown-link>  
                                     <li>
                                             <a href="{{ url('/cart') }}">
                                             <i class="fas fa-shopping-cart"></i> <!-- Ícono de carrito de Font Awesome -->
@@ -397,4 +398,4 @@
        
 
         <!-- Resto del contenido de la página -->
-    </header> 
+    </header>

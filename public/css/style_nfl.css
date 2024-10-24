@@ -9,13 +9,23 @@
 }
 
 body {
-    background: url('../img/field-bg.jpg') no-repeat center center fixed; /* Fondo de cancha de NFL */
+    background: url('../img/bannernfl.webp') no-repeat center center fixed; /* Fondo de cancha de NFL */
     background-size: cover;
     color: #ffffff;
     font-family: 'Poppins', sans-serif;
     overflow-x: hidden;
 }
-
+.title{
+    line-height: 1.2;
+}
+.title h1{
+    font-family: 'Bungee Tint', sans-serif;
+    font-weight: 1000;
+    font-style: normal;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    text-align: justify; /* Justifica el texto */
+}
 .header, .footer {
     background-color: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente */
 }
@@ -129,7 +139,7 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     padding: 50px 20px;
-    background: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente para destacar productos */
+    background: rgba(0, 0, 0, 0.123); 
 }
 
 .product-item {
