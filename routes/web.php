@@ -25,6 +25,7 @@ Route::get('/', function () {
 Route::get('/americano/{ids?}', 'App\Http\Controllers\ProductController@GetNflTeams');
 Route::get('/basket/{ids?}', 'App\Http\Controllers\ProductController@GetNbaTeams');
 
+Route::get('/mexico/{ids?}', 'App\Http\Controllers\ProductController@GetMexCaps');
 
 //resumen de pedido
 Route::get('/order/summary', 'App\Http\Controllers\OrderController@showSummary')->name('order.summary');

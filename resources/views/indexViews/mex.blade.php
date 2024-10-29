@@ -1,5 +1,5 @@
-@include('headerNfl')   
-<body>
+@include('headerMex')   
+<body class="mex">
 
 {{-- Banner Deportivo --}}
 <section class="banner">
@@ -7,7 +7,7 @@
         <div class="slide active">
             <!-- <img src="{{ asset('img/banner_nfl.webp') }}" alt="Estadio NFL 1"> -->
             <div class="text-overlay">
-                <h1>Bienvenido a la NFL</h1>
+                <h1 class="morado">Bienvenido a la M de Mexico</h1>
                 <p>Descubre nuestros productos exclusivos y siente la emoción del juego.</p>
             </div>
         </div>
@@ -31,33 +31,20 @@
     @else
         @foreach($products as $product)
         <div class="product-item">
-            <img src="{{ route('product.image', ['id' => $product->id]) }}" alt="Balón de Fútbol Americano {{ $product->name }}" class="img-card image">
-            <div class="leather-texture"></div> <!-- Textura de cuero -->
-            <div class="stitches">
-                <div class="stitch"></div>
-                <div class="stitch"></div>
-                <div class="stitch"></div>
-                <div class="stitch"></div>
-            </div>
-            <div class="laces">
-                <div class="lace"></div>
-                <div class="lace"></div>
-                <div class="lace"></div>
-            </div>
-            <div class="shadow left"></div>
-            <div class="shadow right"></div>
-            <div class="product-info {{ $loop->even ? 'left' : 'right' }}">
-                <span class="category">{{ $product->category->name }}</span>
-                <h2 class="product-title">{{ $product->name }}</h2>
-                <span class="product-price">$ {{ number_format($product->price, 2) }} MXN</span>
-                <form id="add-to-cart-form" action="{{ route('cart.add') }}" method="POST" onsubmit="agregarProductoAlCarrito(event, {{ $product->id }}); return false;">
-                @csrf
-    <input type="hidden" name="product_id" value="{{ $product->id }}">
-    <button type="submit" class="btn btn-primary">Agregar al carrito</button>
-</form>
+                <img src="{{ route('product.image', ['id' => $product->id]) }}" alt="Balón de Fútbol Americano {{ $product->name }}" class="img-card image">
+                <div class="shadow left"></div>
+                <div class="shadow right"></div>
+                <div class="product-info {{ $loop->even ? 'left' : 'right' }}">
+                    <span class="category">{{ $product->category->name }}</span>
+                    <h2 class="product-title">{{ $product->name }}</h2>
+                    <span class="product-price">$ {{ number_format($product->price, 2) }} MXN</span>
+                    <form id="add-to-cart-form" action="{{ route('cart.add') }}" method="POST" onsubmit="agregarProductoAlCarrito(event, {{ $product->id }}); return false;">
+                    @csrf
+                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+                        <button type="submit" class="btn btn-primary">Agregar al carrito</button>
+                    </form>
 
-
-            </div>
+                    </div>
         </div>
         @endforeach
     @endif

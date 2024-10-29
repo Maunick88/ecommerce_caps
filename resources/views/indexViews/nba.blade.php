@@ -7,7 +7,7 @@
         <div class="slide active">
             <!-- <img src="{{ asset('img/banner_nfl.webp') }}" alt="Estadio NFL 1"> -->
             <div class="text-overlay">
-                <h1>Bienvenido a la NFL</h1>
+                <h1>Bienvenido a la NBA</h1>
                 <p>Descubre nuestros productos exclusivos y siente la emoción del juego.</p>
             </div>
         </div>

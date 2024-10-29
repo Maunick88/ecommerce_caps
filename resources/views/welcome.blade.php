@@ -37,7 +37,7 @@
                     <p>Captruamos la escencia de lo que signicia ser mexicano </p>
                 </div>
                 </div>
-                <a href="{{ url('/mlb/dodgers') }}" class="button-link1">
+                <a href="{{ url('/mexico/24') }}" class="button-link1">
                     <button>Comienza a comprar</button>
                 </a>
             </div>

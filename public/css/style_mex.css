@@ -150,15 +150,15 @@ body {
 
 .product-item {
     position: relative;
-    width: 300px; /* Ancho igual a la altura para una forma circular */
-    height: 300px; /* Ajustado para ser igual al ancho */
+    width: 400px; /* Ancho igual a la altura para una forma circular */
+    height: 400px; /* Ajustado para ser igual al ancho */
     margin: 20px;
-    border-radius: 50%; /* Forma circular */
     overflow: hidden;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background-color: #F57C00; /* Color naranja típico de un balón de baloncesto */
-    background-image: none; /* Eliminamos el gradiente radial usado para el fútbol */
+    background: url('../img/papel.png') no-repeat center center; /* Fondo centrado */
+    background-size: cover; /* Ajuste para cubrir todo el contenedor */
+    background-color: #14f50000; /* Color naranja típico de un balón de baloncesto */
 }
 
 
