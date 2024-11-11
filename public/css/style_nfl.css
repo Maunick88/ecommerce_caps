@@ -15,6 +15,61 @@ body {
     font-family: 'Poppins', sans-serif;
     overflow-x: hidden;
 }
+
+#baseball {
+    background: url('../img/bannermlb.webp');
+    background-size: cover; /* Ajusta la imagen para cubrir toda la página */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que se repita */
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+#beis {
+    background: url('../img/bannerhardhelu.jpg');
+    background-size: cover; /* Ajusta la imagen para cubrir toda la página */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que se repita */
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+#fut {
+    background: url('../img/bannerazteca.jpg');
+    background-size: cover; /* Ajusta la imagen para cubrir toda la página */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que se repita */
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}#race {
+    background: url('../img/bannerrace.webp');
+    background-size: cover; /* Ajusta la imagen para cubrir toda la página */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que se repita */
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+#ren {
+    background: url('../img/bannerren.webp');
+    background-size: cover; /* Ajusta la imagen para cubrir toda la página */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que se repita */
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+#bob {
+    background: url('../img/spongebob.jpg');
+    background-size: cover; /* Ajusta la imagen para cubrir toda la página */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que se repita */
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
 .title{
     line-height: 1.2;
 }
@@ -140,6 +195,19 @@ body {
     padding: 50px 20px;
     background: rgba(0, 0, 0, 0.123); 
 }
+#pina {
+    position: relative;
+    width: 400px; /* Ancho igual a la altura para una forma circular */
+    height: 400px; /* Ajustado para ser igual al ancho */
+    margin: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: url('../img/pina.png') no-repeat center center; /* Fondo centrado */
+    background-size: cover; /* Ajuste para cubrir todo el contenedor */
+    background-color: #14f50000; /* Color naranja típico de un balón de baloncesto */
+}
+
 
 .product-item {
     position: relative;
@@ -160,6 +228,208 @@ body {
 .product-item:hover {
     transform: scale(1.05) translateY(-10px);
     box-shadow: 0 16px 32px rgba(0,0,0,0.5);
+}
+
+#bola {
+    position: relative;
+    width: 300px;
+    height: 300px; /* Círculo perfecto */
+    margin: 20px;
+    border-radius: 50%; /* Círculo completo */
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #ffffff; /* Blanco típico del balón de béisbol */
+}
+
+/* Costuras del balón de béisbol */
+#bola::before,
+#bola::after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 80%;
+    border-radius: 50%;
+    top: 10%;
+    background-color: red;
+    transform: rotate(-45deg);
+}
+
+#bola::before {
+    left: 25%;
+    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px red;
+}
+
+#bola::after {
+    right: 25%;
+    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px red;
+}
+#football {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 20px;
+    border-radius: 50%; /* Forma circular */
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3), inset 0 0 10px rgba(0, 0, 0, 0.5);
+    background-color: #ffffff; /* Color blanco típico del balón */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Líneas negras que simulan los paneles */
+#football::before,
+#football::after {
+    content: "";
+    position: absolute;
+    width: 4px; /* Grosor de las líneas */
+    height: 80%;
+    background-color: #000000;
+    top: 10%;
+    left: 50%;
+    transform: rotate(45deg);
+    transform-origin: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Sombras para dar relieve */
+}
+
+#football::after {
+    transform: rotate(-45deg);
+}
+
+/* Agrega una pseudo-sombra para darle volumen al centro */
+#football::after {
+    content: "";
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.1) 100%);
+}
+
+#tire {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 20px auto;
+    border-radius: 50%; /* Forma circular */
+    background-color: #333333; /* Color gris oscuro para simular el caucho de la llanta */
+    box-shadow: inset 0 0 10px #111, 0 8px 16px rgba(0,0,0,0.3); /* Sombra interior y exterior */
+    overflow: hidden;
+    border: 20px solid #222; /* Borde exterior grueso para dar volumen a la llanta */
+}
+
+/* Ranuras de la llanta */
+#tire::before,
+#tire::after {
+    content: "";
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    top: 5%;
+    left: 5%;
+    border: 10px solid transparent;
+    border-top-color: #111;
+    border-bottom-color: #111;
+    transform: rotate(45deg);
+}
+
+#tire::after {
+    transform: rotate(-45deg);
+}
+
+/* Centro de la llanta */
+#tire .center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80px;
+    height: 80px;
+    background-color: #555555; /* Color gris claro para el centro */
+    border-radius: 50%; /* Forma circular para el centro */
+    transform: translate(-50%, -50%);
+    box-shadow: inset 0 0 10px #222; /* Sombra interna para profundidad */
+}
+
+#ren-stimpy {
+    position: relative;
+    width: 300px;
+    height: 400px;
+    margin: 20px auto;
+    border-radius: 15px; /* Bordes redondeados e irregulares */
+    overflow: hidden;
+    background-color: #ffecd3; /* Fondo de color crema para dar un toque retro */
+    border: 8px solid #ff6b6b; /* Borde rojo, estilo caricatura */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3), inset -5px -5px #ffa500; /* Sombras para dar volumen */
+    font-family: 'Comic Sans MS', cursive, sans-serif; /* Fuente de estilo cómico */
+    text-align: center;
+    color: #333;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Elementos de decoración */
+#ren-stimpy .bubble {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #fdfd96; /* Color amarillo para burbujas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#ren-stimpy .bubble:nth-child(1) {
+    top: 20px;
+    left: 20px;
+}
+
+#ren-stimpy .bubble:nth-child(2) {
+    top: 100px;
+    right: 20px;
+}
+
+#ren-stimpy .bubble:nth-child(3) {
+    bottom: 30px;
+    left: 40px;
+}
+
+/* Estilo del centro de atención */
+#ren-stimpy .center-image {
+    width: 100px;
+    height: 100px;
+    margin: 20px auto;
+    background-color: #ff6b6b; /* Fondo rojo para resaltar */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Estilo del título */
+#ren-stimpy h2 {
+    font-size: 24px;
+    color: #333;
+    margin: 15px 0;
+    text-transform: uppercase;
+}
+
+/* Botón de agregar al carrito */
+#ren-stimpy .btn {
+    background-color: #77dd77; /* Verde brillante estilo caricatura */
+    border: 2px solid #ff6b6b;
+    color: #333;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+#ren-stimpy .btn:hover {
+    background-color: #ff6b6b;
+    color: #fff;
 }
 
 .img-card.image {

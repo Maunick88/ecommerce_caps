@@ -37,7 +37,7 @@
                     <p>Captruamos la escencia de lo que signicia ser mexicano </p>
                 </div>
                 </div>
-                <a href="{{ url('/mexico/24') }}" class="button-link1">
+                <a href="{{ url('/mexico/38,24') }}" class="button-link1">
                     <button>Comienza a comprar</button>
                 </a>
             </div>
@@ -74,8 +74,9 @@
                 ¡Oferta Exclusiva! <br> Gorras con Descuentos Especiales <br>por Tiempo Limitado
                 </p>
 
-                <button>Tienda en línea</button>
-
+                <a href="{{ url('/americano/13,14,15,16,17') }}">
+                    <button>Comienza a comprar</button>
+                </a>
             </div>
             <div class="right-side pyramid">
                 <img src="{{ asset('img/logo.png') }}" alt="" class="gold glow image">
@@ -89,8 +90,10 @@
         <img src="{{ url('https://www.newera.mx/cdn/shop/files/NEGLOBAL_APP_1_720x.jpg?v=1725989847') }}" alt="Summer Training" class="product-image">
             <div class="product-info left">
                 <p class="category">MLB</p>
-                <h2 class="product-title">NEW ERA GLOBAL</h2>
+                <h2 class="product-title">NEW ERA GLOBAL</h2>.
+                <a href="{{ url('/baseball/9,10,11,12,8,7') }}">
                 <button class="buy-button">COMPRA</button>
+                </a>
             </div>
         </div>
         
@@ -101,7 +104,9 @@
             <div class="product-info right">
                 <p class="category">ENTRETENIMIENTO</p>
                 <h2 class="product-title">REN & STIMPY</h2>
+                <a href="{{ url('/ren/39') }}">
                 <button class="buy-button">COMPRA</button>
+            </a>
             </div>
         </div>
         
@@ -113,17 +118,21 @@
         <div class="product-info left">
                 <p class="category">LAMP</p>
                 <h2 class="product-title">SUMMER TRAINING</h2>
+                <a href="{{ url('/beis/24,25,26,27,28') }}">
                 <button class="buy-button">COMPRA</button>
+                </a>
             </div>
         </div>
             <!-- Producto 4 -->
             <div class="product-item">
-        <img src="{{ asset('img/side-img.jpg') }}" alt="Summer Training" class="product-image">
+        <img src="{{ asset('img/f1.webp') }}" alt="Summer Training" class="product-image">
         <div class="shadow left"></div>
             <div class="product-info left ">
-                <p class="category">SUPREME</p>
-                <h2 class="product-title">NEW ERA GLOBAL</h2>
+                <p class="category">F1</p>
+                <h2 class="product-title">MOTOR SPORT</h2>
+                <a href="{{ url('/race/35,37') }}">
                 <button class="buy-button">COMPRA</button>
+                </a>
             </div>
         </div>
         
@@ -132,8 +141,10 @@
             <img src="{{ url('https://www.newera.mx/cdn/shop/files/750x1155_LMX_GOLFER_2_720x.jpg?v=1725653911') }}" alt="Ren & Stimpy" class="product-image">
             <div class="product-info left">
                 <p class="category">FUTBOL MEXICANO</p>
-                <h2 class="product-title">GOLFER</h2>
+                <h2 class="product-title">Liga MX</h2>
+                <a href="{{ url('/fut/29,30,31,33,34') }}">
                 <button class="buy-button">COMPRA</button>
+                </a>
             </div>
         </div>
         
@@ -144,7 +155,9 @@
         <div class="product-info right">
                 <p class="category">ENTRETENIMIENTO</p>
                 <h2 class="product-title">BOB ESPONJA</h2>
+                <a href="{{ url('/bob/39') }}">
                 <button class="buy-button">COMPRA</button>
+                </a>
             </div>
         </div>
     </section>

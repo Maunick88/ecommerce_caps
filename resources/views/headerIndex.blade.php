@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ asset('css/style_index.css') }}">
 </head>
-    <header>
+<header>
         <div class="barra">
             <div class="text-wrapper">
                 <span id="cambio-texto">DISFRUTA <strong>ENVÍO GRATIS</strong> A PARTIR DE <strong>$649</strong> </span>
@@ -27,7 +27,7 @@
             </a>
             <ul class="menu-items">
                 <li class="dropdown">
-                    <a href="{{ url('/mlb/mets') }}">
+                    <a href="{{ url('/baseball/9,10,11,12,8,7') }}">
                     <span class="icon-text">
                         <img src="{{ asset('img/mlb.png') }}" alt="Baseball" class="icon">
                         MLB
@@ -180,8 +180,8 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="{{ url('/mlb/mets') }}">
-                        <span class="icon-text">
+                <a href="{{ url('/beis/24,25,26,27,28') }}">
+                    <span class="icon-text">
                         <img src="{{ asset('img/lmb.png') }}" alt="Fórmula 1" class="icon">
                         LMB
                         </span>
@@ -220,7 +220,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ url('/mlb/mets') }}">
+                            <a href="{{ url('/lmb/sultanes') }}">
                                 <span class="icon-text">
                                     <img src="{{ asset('img/sultanes.png') }}" alt="Baseball" class="icon">
                                     Sultanes de Monterrey
@@ -231,7 +231,7 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="{{ url('/mlb/mets') }}">
+                    <a href="{{ url('/fut/29,30,31,33,34') }}">
                     <span class="icon-text">
                         <img src="{{ asset('img/fut.png') }}" alt="México" class="icon">
                         Futbol
@@ -239,7 +239,7 @@
                     </a>
                     <ul class="dropdown-content">
                         <li>
-                            <a href="{{ url('/mlb/mets') }}">
+                            <a href="{{ url('/fifa/chivas') }}">
                                 <span class="icon-text">
                                     <img src="{{ asset('img/chivas.png') }}" alt="Baseball" class="icon">
                                     Chivas de Guadalajara
@@ -247,7 +247,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ url('/mlb/mets') }}">
+                            <a href="{{ url('/fifa/azul') }}">
                                 <span class="icon-text">
                                     <img src="{{ asset('img/cruzazul.png') }}" alt="Baseball" class="icon">
                                     Cruz Azul
@@ -255,15 +255,15 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ url('/mlb/mets') }}">
-                                <span class="icon-text">
+                        <a href="{{ url('/fifa/america') }}">
+                            <span class="icon-text">
                                     <img src="{{ asset('img/america.png') }}" alt="Baseball" class="icon">
                                     América
                                 </span>
                             </a>
                         </li>
                         <li>
-                            <a href="{{ url('/mlb/mets') }}">
+                        <a href="{{ url('/fifa/uanl') }}">
                                 <span class="icon-text">
                                     <img src="{{ asset('img/tigres.png') }}" alt="Baseball" class="icon">
                                     Tigres de la UANL
@@ -271,7 +271,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ url('/mlb/mets') }}">
+                        <a href="{{ url('/fifa/rayados') }}">
                                 <span class="icon-text">
                                     <img src="{{ asset('img/rayados.png') }}" alt="Baseball" class="icon">
                                     Rayados de Monterrey
@@ -282,7 +282,7 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="{{ url('/mlb/mets') }}">
+                    <a href="{{ url('/race/35,37') }}">
                     <span class="icon-text">
                         <img src="{{ asset('img/f1.png') }}" alt="México" class="icon">
                         Deporte motor
@@ -290,7 +290,7 @@
                     </a>
                     <ul class="dropdown-content">
                         <li>
-                            <a href="{{ url('/mlb/mets') }}">
+                            <a href="{{ url('/motor/redbull') }}">
                                 <span class="icon-text">
                                     <img src="{{ asset('img/redbull.png') }}" alt="Baseball" class="icon">
                                     Oracle Red Bull Racing
@@ -298,16 +298,8 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ url('/mlb/mets') }}">
-                                <span class="icon-text">
-                                    <img src="{{ asset('img/ducati.svg') }}" alt="Baseball" class="icon">
-                                    Ducati Team
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ url('/mlb/mets') }}">
-                                <span class="icon-text">
+                        <a href="{{ url('/motor/mclaren') }}">
+                            <span class="icon-text">
                                     <img src="{{ asset('img/mclaren.png') }}" alt="Baseball" class="icon">
                                     McLaren F1 Team
                                 </span>
@@ -317,7 +309,7 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="{{ url('/mlb/mets') }}">
+                    <a href="{{ url('/mexico/38') }}">
                     <span class="icon-text">
                         <img src="{{ asset('img/mex.png') }}" alt="México" class="icon">
                         México
@@ -325,7 +317,7 @@
                     </a>
                     <ul class="dropdown-content">
                         <li>
-                            <a href="{{ url('/mlb/mets') }}">
+                            <a href="{{ url('/motor/mex') }}">
                                 <span class="icon-text">
                                     México M
                                 </span>
@@ -396,4 +388,4 @@
        
 
         <!-- Resto del contenido de la página -->
-    </header>
+</header>

@@ -24,8 +24,15 @@ Route::get('/', function () {
 
 Route::get('/americano/{ids?}', 'App\Http\Controllers\ProductController@GetNflTeams');
 Route::get('/basket/{ids?}', 'App\Http\Controllers\ProductController@GetNbaTeams');
+Route::get('/beis/{ids?}', 'App\Http\Controllers\ProductController@GetLmbCaps');
 
+Route::get('/baseball/{ids?}', 'App\Http\Controllers\ProductController@GetMlbCaps');
 Route::get('/mexico/{ids?}', 'App\Http\Controllers\ProductController@GetMexCaps');
+Route::get('/fut/{ids?}', 'App\Http\Controllers\ProductController@GetFutCaps');
+Route::get('/race/{ids?}', 'App\Http\Controllers\ProductController@GetRaceCaps');
+Route::get('/bob/{ids?}', 'App\Http\Controllers\ProductController@GetBobCaps');
+Route::get('/ren/{ids?}', 'App\Http\Controllers\ProductController@GetRenCaps');
+
 
 //resumen de pedido
 Route::get('/order/summary', 'App\Http\Controllers\OrderController@showSummary')->name('order.summary');
