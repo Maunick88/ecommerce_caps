@@ -104,7 +104,7 @@
             <div class="product-info right">
                 <p class="category">ENTRETENIMIENTO</p>
                 <h2 class="product-title">REN & STIMPY</h2>
-                <a href="{{ url('/ren/39') }}">
+                <a href="{{ url('/ren/40') }}">
                 <button class="buy-button">COMPRA</button>
             </a>
             </div>

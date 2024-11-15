@@ -7,8 +7,8 @@
         <div class="slide active">
             <!-- <img src="{{ asset('img/banner_nfl.webp') }}" alt="Estadio NFL 1"> -->
             <div class="text-overlay">
-                <h1>Bienvenido a Fondo de Bikini</h1>
-                <p>Descubre nuestros productos exclusivos de Bob Esponja</p>
+                <h1>Bienvenido al universo de Ren & Stimpy</h1>
+                <p>Descubre nuestros productos exclusivos de Ren & Stimpy</p>
             </div>
         </div>
         <div class="slide">
